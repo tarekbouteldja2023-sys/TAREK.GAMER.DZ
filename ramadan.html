@@ -2,98 +2,8 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>رمضان - TAREK GAMER DZ</title>
-<link rel="stylesheet" href="style.css">
-<style>
-/* الخطوط والصفحة */
-body{
-    margin:0;
-    padding:0;
-    font-family:'Cairo',sans-serif;
-    color:white;
-    overflow:hidden;
-    text-align:center;
-}
-
-/* الفيديو الخلفية */
-#bg-video{
-    position:fixed;
-    right:0;
-    bottom:0;
-    min-width:100%;
-    min-height:100%;
-    object-fit:cover;
-    z-index:-1;
-    filter:brightness(0.85) contrast(1.1);
-}
-
-/* العنوان الرئيسي */
-.main-header{
-    margin-top:150px;
-}
-
-.main-header h1{
-    font-size:42px;
-    font-weight:900;
-    color:#ffd700;
-    text-shadow:0 0 15px #ffd700;
-    margin-bottom:10px;
-}
-
-.main-header h2{
-    font-size:24px;
-    font-weight:700;
-    color:#fff;
-    margin-bottom:5px;
-}
-
-/* شريط الترحيب */
-.welcome-bar{
-    position:fixed;
-    top:60px;
-    width:100%;
-    height:40px;
-    background:rgba(0,0,0,0.6);
-    border-bottom:2px solid #00ffff;
-    overflow:hidden;
-    z-index:99;
-}
-
-.welcome-text{
-    font-size:18px;
-    font-weight:900;
-    white-space:nowrap;
-    display:inline-block;
-    padding-left:100%;
-    animation:scrollText 25s linear infinite;
-    color:white;
-}
-
-@keyframes scrollText{
-    from{transform:translateX(0);}
-    to{transform:translateX(-100%);}
-}
-
-/* روابط العودة للصفحة الرئيسية */
-.back-home{
-    margin-top:50px;
-}
-
-.back-home a{
-    text-decoration:none;
-    padding:10px 20px;
-    border-radius:20px;
-    font-weight:bold;
-    color:white;
-    background:#00ffff;
-    transition:0.3s;
-}
-
-.back-home a:hover{
-    transform:scale(1.05);
-    background:#0ff;
-}
-</style>
+<title>رمضان كريم - TAREK GAMER DZ</title>
+<link rel="stylesheet" href="styleramadan.css">
 </head>
 <body>
 
@@ -102,34 +12,46 @@ body{
     <source src="video1.mp4" type="video/mp4">
 </video>
 
-<!-- الموسيقى الخلفية -->
+<!-- موسيقى الخلفية -->
 <audio autoplay loop>
     <source src="music1.mp3" type="audio/mp3">
 </audio>
 
-<!-- شريط الترحيب -->
-<div class="welcome-bar">
-    <span class="welcome-text">🌙 مرحبا بكم في صفحة رمضان الرسمية - TAREK GAMER DZ 🌙</span>
-</div>
-
-<!-- العنوان الرئيسي -->
-<div class="main-header">
-    <h1>🌙 رمضان كريم</h1>
-    <h2>تستمتع بالموسيقى والفيديو الرمضاني</h2>
-</div>
-
-<!-- رابط العودة للصفحة الرئيسية -->
-<div class="back-home">
+<!-- شريط علوي -->
+<div class="top-nav">
     <a href="index.html">⬅ العودة للصفحة الرئيسية</a>
+    <span>🌙 رمضان كريم</span>
 </div>
 
-<!-- صوت النقر عند الضغط -->
-<script>
-document.addEventListener('click', function(){
-    var clickSound = new Audio('click.mp3');
-    clickSound.play();
-});
-</script>
+<!-- شريط جانبي أيسر -->
+<div class="sidebar">
+    <div class="date-box">
+        <p id="gregorian">التاريخ الميلادي: </p>
+        <p id="hijri">التاريخ الهجري: </p>
+    </div>
+</div>
 
+<!-- بطاقات الأدعية -->
+<div class="cards-container" id="cards">
+    <!-- سيتم تعبئتها بواسطة JS -->
+</div>
+
+<!-- وسط الصفحة - الساعة -->
+<div class="main-center">
+    <h1 id="time">00:00:00</h1>
+    <h2>الوقت الحالي</h2>
+</div>
+
+<!-- مواقيت الصلاة -->
+<div class="prayer-times">
+    <div>الفجر<br><span id="fajr">05:00</span></div>
+    <div>الظهر<br><span id="dhuhr">12:30</span></div>
+    <div>العصر<br><span id="asr">15:45</span></div>
+    <div>المغرب<br><span id="maghrib">18:15</span></div>
+    <div>العشاء<br><span id="isha">19:45</span></div>
+</div>
+
+<!-- ربط JS -->
+<script src="scriptramadan.js"></script>
 </body>
 </html>
