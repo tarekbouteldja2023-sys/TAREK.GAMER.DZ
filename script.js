@@ -6,34 +6,14 @@ document.querySelectorAll('a, .social-card a').forEach(btn => {
   });
 });
 
-// ===== عملة TBS ===== //
-let tbs = 0; 
-const tbsDisplay = document.getElementById('tbs-display');
-
-function addTBS(amount) {
-  tbs += amount;
-  updateTBSDisplay();
-}
-
-function updateTBSDisplay() {
-  if(tbsDisplay){
-    tbsDisplay.innerHTML = `<i class="fa-solid fa-coins"></i> ${tbs} TBS`;
-  }
-}
-
-// زيادة TBS عند الضغط على بطاقات التواصل
-document.querySelectorAll('.social-card a').forEach(cardBtn => {
-  cardBtn.addEventListener('click', () => {
-    addTBS(20);
-  });
+// عملة TBS
+let tbs=0; 
+const tbsDisplay=document.getElementById('tbs-display');
+function addTBS(amount){tbs+=amount;updateTBSDisplay();}
+function updateTBSDisplay(){if(tbsDisplay){tbsDisplay.innerHTML=`<i class="fa-solid fa-coins"></i> ${tbs} TBS`;}}
+document.querySelectorAll('.social-card a').forEach(cardBtn=>{
+  cardBtn.addEventListener('click',()=>{addTBS(20);});
 });
 
 // موسيقى الخلفية
-const music = document.getElementById('music');
-if(music){ music.volume = 0.25; }
-
-// تأثير Hover للشريط العلوي
-document.querySelectorAll('.top-nav a').forEach(iconBtn => {
-  iconBtn.addEventListener('mouseenter', () => { iconBtn.style.transform='scale(1.1)'; });
-  iconBtn.addEventListener('mouseleave', () => { iconBtn.style.transform='scale(1)'; });
-});
+const music=document.getElementById('music');if(music){music.volume=0.25;}
