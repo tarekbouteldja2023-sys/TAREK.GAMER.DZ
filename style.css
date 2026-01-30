@@ -8,7 +8,6 @@ body {
   background: #000;
 }
 
-/* الفيديو الخلفية */
 #bg-video {
   position: fixed;
   right:0;
@@ -214,4 +213,4 @@ body {
   .social-main { flex-direction:column; align-items:center; }
   .social-main .social-card { width:80%; }
   .sidebar { width:160px; }
-    }
+}
