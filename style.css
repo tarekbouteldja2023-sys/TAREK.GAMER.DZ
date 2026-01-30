@@ -1,26 +1,31 @@
+/* ===== تصفير كامل يمنع أي شريط أبيض ===== */
 * {
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Arial, sans-serif;
-}
-
-body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
   background: black;
   color: white;
   overflow-x: hidden;
+  font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-/* فيديو الخلفية */
+/* ===== فيديو الخلفية ===== */
 #bg-video {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   z-index: -1;
 }
 
-/* الشريط العلوي */
+/* ===== الشريط العلوي ===== */
 .top-nav {
   position: fixed;
   top: 0;
@@ -29,18 +34,22 @@ body {
   height: 55px;
   background: rgba(0,0,0,0.9);
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  gap: 22px;
   z-index: 1000;
 }
 
 .top-nav a {
-  color: white;
+  color: #fff;
   text-decoration: none;
-  padding: 8px 14px;
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
   border-radius: 10px;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .top-nav a:hover {
@@ -48,15 +57,16 @@ body {
   transform: scale(1.05);
 }
 
-/* شريط الترحيب */
+/* ===== شريط الترحيب المتحرك ===== */
 .welcome-bar {
   position: fixed;
   top: 55px;
+  left: 0;
   width: 100%;
   height: 32px;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.6);
   overflow: hidden;
-  z-index: 99;
+  z-index: 999;
 }
 
 .welcome-text {
@@ -64,33 +74,38 @@ body {
   padding-left: 100%;
   color: #ffd700;
   font-size: 16px;
-  animation: scroll 30s linear infinite;
+  line-height: 32px;
+  animation: scrollText 30s linear infinite;
 }
 
-@keyframes scroll {
+@keyframes scrollText {
   from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
+  to   { transform: translateX(-100%); }
 }
 
-/* الشريط الجانبي */
+/* ===== الشريط الجانبي ===== */
 .sidebar {
   position: fixed;
+  top: 87px; /* 55 + 32 */
   left: 0;
-  top: 90px;
   width: 220px;
-  height: calc(100% - 90px);
-  background: rgba(0,0,0,0.7);
+  height: calc(100% - 87px);
+  background: rgba(0,0,0,0.75);
   padding: 15px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 14px;
+  z-index: 900;
 }
 
 .sidebar a {
   cursor: pointer;
-  padding: 8px;
-  border-radius: 6px;
-  transition: 0.3s;
+  padding: 8px 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.25s;
 }
 
 .sidebar a:hover {
@@ -101,24 +116,24 @@ body {
   margin-top: auto;
 }
 
-/* المحتوى */
+/* ===== المحتوى الرئيسي ===== */
 .content {
-  margin-left: 250px;
-  margin-top: 150px;
+  margin-left: 240px;
+  margin-top: 120px;
   padding: 30px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 28px;
 }
 
-/* بطاقات التواصل */
+/* ===== بطاقات التواصل ===== */
 .social-card {
-  background: rgba(0,0,0,0.75);
+  background: rgba(0,0,0,0.8);
   border-radius: 18px;
   padding: 25px;
   text-align: center;
-  transition: 0.35s;
   box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  transition: 0.35s ease;
 }
 
 .social-card:hover {
@@ -126,26 +141,40 @@ body {
 }
 
 .social-card i {
-  font-size: 45px;
+  font-size: 46px;
+  margin-bottom: 10px;
+}
+
+.social-card h3 {
   margin-bottom: 10px;
 }
 
 .social-card a {
   display: inline-block;
-  margin-top: 12px;
-  padding: 10px 22px;
-  border-radius: 25px;
+  padding: 10px 24px;
+  border-radius: 30px;
   background: white;
   color: black;
   font-weight: bold;
   text-decoration: none;
 }
 
-/* ألوان الأيقونات */
-.instagram i { color:#E1306C; }
-.youtube i { color:#FF0000; }
-.facebook i { color:#1877F2; }
-.telegram i { color:#229ED9; }
-.discord i { color:#5865F2; }
-.tiktok i { color:#00f2ea; }
+/* ===== ألوان الأيقونات ===== */
+.instagram i { color: #E1306C; }
+.youtube i   { color: #FF0000; }
+.facebook i  { color: #1877F2; }
+.telegram i  { color: #229ED9; }
+.discord i   { color: #5865F2; }
+.tiktok i    { color: #00f2ea; }
 
+/* ===== استجابة الشاشات الصغيرة ===== */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .content {
+    margin-left: 0;
+    margin-top: 120px;
+  }
+                   }
