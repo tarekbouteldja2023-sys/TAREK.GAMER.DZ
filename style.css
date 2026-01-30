@@ -45,20 +45,19 @@ body {
   gap:5px;
   font-weight:bold;
   transition:0.3s;
-  text-shadow:0 0 5px #00ffff;
+  box-shadow:0 0 10px #00ffff inset; /* إطار مضيء */
 }
 
 .top-nav a:hover {
-  color:#00ffff;
+  box-shadow:0 0 15px #00ffff inset,0 0 20px #00ffff;
   transform:scale(1.05);
-  text-shadow:0 0 15px #00ffff,0 0 25px #ffdd00;
 }
 
 #tbs-display {
   margin-left:20px;
   font-weight:bold;
   color:#ffdd00;
-  text-shadow:0 0 8px #ffdd00,0 0 15px #ffdd00;
+  text-shadow:0 0 8px #ffdd00;
 }
 
 /* ===== شريط الترحيب ===== */
@@ -117,8 +116,7 @@ body {
   gap:10px;
   transition:0.3s;
   font-weight:bold;
-  border:2px solid #00ffff;
-  box-shadow:0 0 10px #00ffff inset;
+  box-shadow:0 0 10px #00ffff inset; /* إطار أيقونة مضيء */
 }
 
 .sidebar a:hover {
@@ -145,12 +143,12 @@ body {
   color:#00ffff;
   font-size:48px;
   font-weight:bold;
-  text-shadow:0 0 5px #00ffff,0 0 10px #00ffff;
+  text-shadow:0 0 5px #00ffff; /* ضوء عادي */
 }
 
 .site-name i{
   color:#ffd700;
-  text-shadow:0 0 10px #ffd700,0 0 15px #ffd700;
+  text-shadow:0 0 10px #ffd700; 
 }
 
 /* ===== بطاقات مواقع التواصل الاجتماعي ===== */
@@ -159,7 +157,7 @@ body {
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:15px;
+  gap:12px;
 }
 
 .social-main .social-card{
@@ -167,32 +165,32 @@ body {
   flex-direction:column;
   align-items:center;
   justify-content:space-between;
-  width:250px;
+  width:200px;
   padding:12px 20px;
-  border-radius:15px;
+  border-radius:12px;
   color:white;
   font-weight:bold;
   cursor:pointer;
   transition:0.3s ease, transform 0.3s, box-shadow 0.3s;
   border:2px solid;
-  box-shadow:0 0 10px #fff inset;
+  box-shadow:0 0 8px #fff inset;
   text-align:center;
 }
 
 .social-main .social-card i{
-  font-size:28px;
+  font-size:26px;
   margin-bottom:6px;
   transition:0.3s ease;
-  text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 15px #fff;
+  text-shadow:0 0 5px #fff;
 }
 
 .social-main .social-card:hover i{
-  text-shadow:0 0 10px #fff,0 0 20px #fff,0 0 30px #00ffff,0 0 40px #ffdd00,0 0 50px #00ffff;
-  transform:scale(1.2);
+  text-shadow:0 0 10px #fff,0 0 15px #00ffff;
+  transform:scale(1.15);
 }
 
 .social-main .social-card span{
-  font-size:16px;
+  font-size:15px;
   font-weight:bold;
 }
 
@@ -200,8 +198,8 @@ body {
   display:inline-flex;
   align-items:center;
   gap:6px;
-  padding:6px 15px;
-  border-radius:25px;
+  padding:5px 12px;
+  border-radius:20px;
   text-decoration:none;
   font-weight:bold;
   color:white;
@@ -217,13 +215,13 @@ body {
 .tiktok{background:#000000; border-color:#000000;}
 
 .social-main .social-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 0 20px #00ffff,0 0 25px #ffdd00 inset;
+  transform:translateY(-2px);
+  box-shadow:0 0 12px #00ffff,0 0 15px #ffdd00 inset;
 }
 
 .social-top{
-  font-size:14px;
+  font-size:13px;
   margin-bottom:5px;
   color:white;
   font-weight:bold;
-}
+  }
