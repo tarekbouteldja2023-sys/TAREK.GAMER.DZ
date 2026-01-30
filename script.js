@@ -1,17 +1,53 @@
-// تشغيل الموسيقى وصوت النقر
-document.addEventListener("click", () => {
-  const music = document.getElementById("bgMusic");
-  if (music.paused) music.play().catch(() => console.log("اضغط لتشغيل الصوت"));
+// ======== صوت النقر عند الضغط ========
+const clickSound = new Audio('click.mp3');
 
-  const click = document.getElementById("clickSound");
-  click.currentTime = 0;
-  click.play();
+// تفعيل الصوت على كل روابط <a>
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    clickSound.currentTime = 0; // يبدأ من البداية
+    clickSound.play();
+  });
 });
 
-// العملة TBS
-let coins = 0;
-const coinsDisplay = document.getElementById("coins");
-function addCoin(amount) {
-  coins += amount;
-  coinsDisplay.textContent = coins;
+// ======== موسيقى الخلفية (اختياري تحكم) ========
+const bgMusic = document.getElementById('music');
+
+// يمكنك إضافة زر لإيقاف أو تشغيل الموسيقى إذا أحببت
+function toggleMusic() {
+  if (bgMusic.paused) {
+    bgMusic.play();
+  } else {
+    bgMusic.pause();
+  }
+}
+
+// ======== مثال لتحديث عملة المستخدم TBS (مستقبلي) ========
+// عند تنفيذ مهمة أو زيارة صفحة
+let userCoins = 0;
+
+function addCoins(amount) {
+  userCoins += amount;
+  console.log("TBS الحالية: " + userCoins);
+  // هنا يمكنك ربط قيمة العملات بعنصر واجهة لعرضها
+  const coinDisplay = document.getElementById('user-coins');
+  if (coinDisplay) {
+    coinDisplay.textContent = userCoins + " TBS";
+  }
+}
+
+// مثال: مكافأة عند الضغط على بطاقة تواصل (يمكنك لاحقاً ربطه مع كل مهمة)
+document.querySelectorAll('.social-card').forEach(card => {
+  card.addEventListener('click', () => {
+    addCoins(20); // كل نقرة تكسب 20 TBS
+  });
+});
+
+// ======== شريط الترحيب المتحرك (اختياري التحكم بالسرعة) ========
+const welcomeText = document.querySelector('.welcome-text');
+
+// لتغيير السرعة أو إعادة التشغيل
+function resetWelcome() {
+  welcomeText.style.animation = 'none';
+  void welcomeText.offsetWidth; // force reflow
+  welcomeText.style.animation = '';
 }
