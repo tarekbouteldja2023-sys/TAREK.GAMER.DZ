@@ -1,4 +1,4 @@
-/* ===== تصفير كامل يمنع أي شريط أبيض ===== */
+/* ===== تصفير كل شيء ===== */
 * {
   margin: 0;
   padding: 0;
@@ -57,7 +57,7 @@ html, body {
   transform: scale(1.05);
 }
 
-/* ===== شريط الترحيب المتحرك ===== */
+/* ===== شريط الترحيب ===== */
 .welcome-bar {
   position: fixed;
   top: 55px;
@@ -86,7 +86,7 @@ html, body {
 /* ===== الشريط الجانبي ===== */
 .sidebar {
   position: fixed;
-  top: 87px; /* 55 + 32 */
+  top: 87px;
   left: 0;
   width: 220px;
   height: calc(100% - 87px);
@@ -159,7 +159,7 @@ html, body {
   text-decoration: none;
 }
 
-/* ===== ألوان الأيقونات ===== */
+/* ألوان الأيقونات */
 .instagram i { color: #E1306C; }
 .youtube i   { color: #FF0000; }
 .facebook i  { color: #1877F2; }
@@ -169,12 +169,6 @@ html, body {
 
 /* ===== استجابة الشاشات الصغيرة ===== */
 @media (max-width: 768px) {
-  .sidebar {
-    display: none;
-  }
-
-  .content {
-    margin-left: 0;
-    margin-top: 120px;
-  }
-                   }
+  .sidebar { display: none; }
+  .content { margin-left: 0; margin-top: 120px; }
+}
