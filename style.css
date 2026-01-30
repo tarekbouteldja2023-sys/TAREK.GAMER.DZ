@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
 
-/* ====== إعدادات عامة ====== */
 *{
   box-sizing:border-box;
 }
@@ -11,9 +10,10 @@ body{
   padding:0;
   color:white;
   overflow:hidden;
+  background:black;
 }
 
-/* ====== الخلفية المتحركة ====== */
+/* خلفية الفيديو */
 #bg-video{
   position:fixed;
   right:0;
@@ -22,22 +22,23 @@ body{
   min-height:100%;
   object-fit:cover;
   z-index:-1;
-  filter:brightness(0.9) contrast(1.1);
+  filter:brightness(0.9) contrast(1.15);
 }
 
+/* الصوت */
 audio{display:none;}
 
-/* ====== الشريط العلوي ====== */
+/* ================= الشريط العلوي ================= */
 .top-nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:60px;
   display:flex;
   justify-content:center;
   align-items:center;
   gap:18px;
   background:rgba(0,0,0,0.85);
-  padding:12px 20px;
-  position:fixed;
-  top:0;
-  width:100%;
   z-index:100;
   border-bottom:2px solid #00ffff;
   box-shadow:0 0 20px #00ffff;
@@ -52,50 +53,49 @@ audio{display:none;}
   display:flex;
   align-items:center;
   gap:6px;
-  border:1px solid rgba(0,255,255,0.6);
   box-shadow:0 0 10px #00ffff inset;
   transition:0.3s;
 }
 
 .top-nav a:hover{
-  transform:scale(1.07);
-  box-shadow:0 0 15px #00ffff inset,0 0 20px #00ffff;
+  box-shadow:0 0 18px #00ffff inset,0 0 18px #00ffff;
+  transform:scale(1.05);
 }
 
-/* عملة TBS */
 #tbs-display{
   margin-left:20px;
   font-weight:bold;
-  color:#00ff00;
+  color:#00ff66;
 }
 
-/* ====== شريط الترحيب ====== */
+/* ================= شريط الترحيب ================= */
 .welcome-bar{
   position:fixed;
   top:60px;
   width:100%;
   height:40px;
   background:rgba(0,0,0,0.65);
+  border-bottom:2px solid #00ffff;
+  box-shadow:0 0 15px #00ffff;
   overflow:hidden;
   z-index:99;
-  border-bottom:2px solid #00ffff;
 }
 
 .welcome-text{
   font-size:18px;
   font-weight:900;
   white-space:nowrap;
-  padding-left:100%;
   display:inline-block;
-  animation:scrollText 25s linear infinite;
+  padding-left:100%;
+  animation:scrollText 22s linear infinite;
 }
 
 @keyframes scrollText{
-  0%{transform:translateX(0);}
-  100%{transform:translateX(-100%);}
+  from{transform:translateX(0);}
+  to{transform:translateX(-100%);}
 }
 
-/* ====== الشريط الجانبي ====== */
+/* ================= الشريط الجانبي ================= */
 .sidebar{
   position:fixed;
   top:100px;
@@ -107,9 +107,9 @@ audio{display:none;}
   display:flex;
   flex-direction:column;
   gap:14px;
-  z-index:90;
   border-right:2px solid #00ffff;
   box-shadow:0 0 20px #00ffff;
+  z-index:90;
 }
 
 .sidebar a{
@@ -121,35 +121,28 @@ audio{display:none;}
   align-items:center;
   gap:10px;
   font-weight:bold;
-  border:1px solid rgba(0,255,255,0.5);
   box-shadow:0 0 10px #00ffff inset;
   transition:0.3s;
 }
 
 .sidebar a:hover{
-  transform:translateX(5px);
-  box-shadow:0 0 15px #00ffff inset,0 0 20px #00ffff;
+  box-shadow:0 0 18px #00ffff inset,0 0 18px #00ffff;
 }
 
-.sidebar a.bottom{
+.sidebar .bottom{
   margin-top:auto;
-  margin-bottom:10px;
 }
 
-/* ====== العنوان الرئيسي ====== */
+/* ================= العنوان الرئيسي ================= */
 .main-header{
+  margin-left:220px;
+  margin-top:150px;
   text-align:center;
-  margin-top:160px;
-}
-
-.main-header h1,
-.main-header h2{
-  margin:6px 0;
 }
 
 .main-header h1{
-  font-size:34px;
-  font-weight:900;
+  font-size:26px;
+  font-weight:700;
 }
 
 .site-name{
@@ -158,120 +151,121 @@ audio{display:none;}
   color:#ffffff;
 }
 
-.site-name i{
-  color:#ffd700;
-}
-
 .main-header h2{
   font-size:22px;
-  color:#e0e0e0;
+  color:#ddd;
 }
 
-/* ====== مواقع التواصل (3 في السطر) ====== */
+/* ================= بطاقات التواصل ================= */
 .social-main{
+  margin-left:220px;
   margin-top:30px;
-  margin-left:240px;
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
+  grid-template-columns:repeat(3, 1fr);
+  gap:20px;
   justify-items:center;
 }
 
-/* ====== بطاقة التواصل ====== */
-.social-card{
-  width:160px;
-  background:#000;
-  padding:12px;
-  border-radius:14px;
-  border:2px solid;
+.social-wrapper{
   text-align:center;
-  box-shadow:0 0 12px;
+}
+
+.social-title{
+  font-size:14px;
+  margin-bottom:6px;
+  font-weight:700;
+  color:#ccc;
+}
+
+.social-card{
+  width:170px;
+  height:140px;
+  background:#000;
+  border-radius:14px;
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+  border:2px solid;
   transition:0.3s;
 }
 
-.social-card:hover{
-  transform:translateY(-6px) scale(1.03);
-  box-shadow:0 0 20px currentColor;
-}
-
-.social-top{
-  font-size:14px;
-  font-weight:bold;
-  margin-bottom:6px;
-}
-
 .social-card i{
-  font-size:32px;
-  margin-bottom:6px;
+  font-size:36px;
 }
 
 .social-card span{
   font-size:16px;
-  font-weight:bold;
-  display:block;
+  font-weight:700;
 }
 
 .social-card p{
   font-size:13px;
-  color:#ccc;
-  margin:6px 0;
+  color:#aaa;
+  margin:0;
 }
 
 .social-card a{
-  display:inline-block;
+  margin-top:6px;
   padding:6px 14px;
   border-radius:20px;
   text-decoration:none;
   font-weight:bold;
   color:white;
-  background:rgba(255,255,255,0.1);
-  transition:0.3s;
+  background:rgba(255,255,255,0.15);
 }
 
-.social-card a:hover{
-  background:rgba(255,255,255,0.3);
+.social-card:hover{
+  transform:translateY(-5px);
 }
 
-/* ====== ألوان المنصات ====== */
-.instagram{border-color:#8A2BE2; box-shadow:0 0 12px #8A2BE2;}
+/* ================= ألوان المنصات ================= */
+.instagram{
+  border-color:#8A2BE2;
+  box-shadow:0 0 12px #8A2BE2;
+}
 .instagram i{color:#8A2BE2;}
 
-.youtube{border-color:#ff0000; box-shadow:0 0 12px #ff0000;}
+.youtube{
+  border-color:#ff0000;
+  box-shadow:0 0 12px #ff0000;
+}
 .youtube i{color:#ff0000;}
 
-.facebook{border-color:#1877f2; box-shadow:0 0 12px #1877f2;}
+.facebook{
+  border-color:#1877f2;
+  box-shadow:0 0 12px #1877f2;
+}
 .facebook i{color:#1877f2;}
 
-.telegram{border-color:#00bfff; box-shadow:0 0 12px #00bfff;}
+.telegram{
+  border-color:#00bfff;
+  box-shadow:0 0 12px #00bfff;
+}
 .telegram i{color:#00bfff;}
 
-.discord{border-color:#7289da; box-shadow:0 0 12px #7289da;}
-.discord i{color:#7289da;}
+.discord{
+  border-color:#f1c40f;
+  box-shadow:0 0 12px #f1c40f;
+}
+.discord i{color:#f1c40f;}
 
-.tiktok{border-color:#ffffff; box-shadow:0 0 12px #ffffff;}
-.tiktok i{color:#ffffff;}
-
-/* ====== التذييل ====== */
-footer{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  text-align:right;
-  padding:8px 20px;
-  font-size:14px;
+/* تيك توك رمادي */
+.tiktok{
+  border-color:#777;
+  box-shadow:0 0 12px #777;
+}
+.tiktok i{
   color:#aaa;
 }
 
-/* ====== استجابة الشاشات ====== */
-@media(max-width:1000px){
-  .social-main{
-    grid-template-columns:repeat(2,1fr);
-    margin-left:0;
-  }
-}
-
-@media(max-width:600px){
-  .social-main{
-    grid-template-columns:1fr;
-  }
+/* ================= التذييل ================= */
+footer{
+  position:fixed;
+  bottom:0;
+  right:10px;
+  font-size:13px;
+  color:#aaa;
+  text-align:right;
 }
