@@ -1,4 +1,4 @@
-// تشغيل صوت النقر عند الضغط على أي رابط أو زر
+// صوت النقر عند الضغط على أي رابط أو زر
 document.querySelectorAll('a, .social-card a').forEach(btn => {
   btn.addEventListener('click', () => {
     const clickSound = new Audio('click.mp3');
@@ -6,40 +6,36 @@ document.querySelectorAll('a, .social-card a').forEach(btn => {
   });
 });
 
-// ====== عملة TBS ====== //
-let tbs = 0; // البداية
-
+// ===== عملة TBS ===== //
+let tbs = 0; 
 const tbsDisplay = document.getElementById('tbs-display');
 
-// دالة لزيادة العملة
 function addTBS(amount) {
   tbs += amount;
   updateTBSDisplay();
 }
 
-// تحديث عرض العملة في الشريط العلوي
 function updateTBSDisplay() {
   if(tbsDisplay){
     tbsDisplay.innerHTML = `<i class="fa-solid fa-coins"></i> ${tbs} TBS`;
   }
 }
 
-// مثال: زيادة TBS عند الضغط على مهام أو بطاقات التواصل
+// مثال: زيادة TBS عند الضغط على بطاقات التواصل
 document.querySelectorAll('.social-card a').forEach(cardBtn => {
   cardBtn.addEventListener('click', () => {
-    addTBS(20); // كل ضغطة تعطي 20 TBS
+    addTBS(20);
   });
 });
 
-// موسيقى الخلفية تشغيل تلقائي + تحكم
+// موسيقى الخلفية
 const music = document.getElementById('music');
 if(music){
-  music.volume = 0.25; // هادئ قليلاً
+  music.volume = 0.25;
 }
 
-// إضافة مؤثر عند المرور على أيقونات الشريط العلوي (اختياري)
+// تأثير Hover للشريط العلوي
 document.querySelectorAll('.top-nav a').forEach(iconBtn => {
-  iconBtn.addEventListener('mouseenter', () => {
-    iconBtn.style.transform = 'scale(1.1)';
-  });
-  iconBtn.addEventListener
+  iconBtn.addEventListener('mouseenter', () => { iconBtn.style.transform = 'scale(1.1)'; });
+  iconBtn.addEventListener('mouseleave', () => { iconBtn.style.transform = 'scale(1)'; });
+});
