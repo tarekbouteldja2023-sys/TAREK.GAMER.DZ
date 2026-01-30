@@ -1,36 +1,45 @@
-// صوت النقر عند الضغط
-const clickSound = new Audio('click.mp3');
-document.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click',()=> {
-    clickSound.currentTime = 0;
+// تشغيل صوت النقر عند الضغط على أي رابط أو زر
+document.querySelectorAll('a, .social-card a').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const clickSound = new Audio('click.mp3');
     clickSound.play();
   });
 });
 
-// موسيقى الخلفية
-const bgMusic = document.getElementById('music');
-function toggleMusic() {
-  if(bgMusic.paused){ bgMusic.play(); }
-  else{ bgMusic.pause(); }
+// ====== عملة TBS ====== //
+let tbs = 0; // البداية
+
+const tbsDisplay = document.getElementById('tbs-display');
+
+// دالة لزيادة العملة
+function addTBS(amount) {
+  tbs += amount;
+  updateTBSDisplay();
 }
 
-// مثال العملة TBS
-let userCoins = 0;
-function addCoins(amount) {
-  userCoins += amount;
-  const coinDisplay = document.getElementById('tbs-display');
-  if(coinDisplay){ coinDisplay.textContent = userCoins + " TBS"; }
+// تحديث عرض العملة في الشريط العلوي
+function updateTBSDisplay() {
+  if(tbsDisplay){
+    tbsDisplay.innerHTML = `<i class="fa-solid fa-coins"></i> ${tbs} TBS`;
+  }
 }
 
-// مكافأة عند الضغط على أي بطاقة تواصل
-document.querySelectorAll('.social-card').forEach(card=>{
-  card.addEventListener('click',()=>addCoins(20));
+// مثال: زيادة TBS عند الضغط على مهام أو بطاقات التواصل
+document.querySelectorAll('.social-card a').forEach(cardBtn => {
+  cardBtn.addEventListener('click', () => {
+    addTBS(20); // كل ضغطة تعطي 20 TBS
+  });
 });
 
-// شريط الترحيب تحكم بالسرعة
-const welcomeText = document.querySelector('.welcome-text');
-function resetWelcome(){
-  welcomeText.style.animation='none';
-  void welcomeText.offsetWidth;
-  welcomeText.style.animation='';
+// موسيقى الخلفية تشغيل تلقائي + تحكم
+const music = document.getElementById('music');
+if(music){
+  music.volume = 0.25; // هادئ قليلاً
 }
+
+// إضافة مؤثر عند المرور على أيقونات الشريط العلوي (اختياري)
+document.querySelectorAll('.top-nav a').forEach(iconBtn => {
+  iconBtn.addEventListener('mouseenter', () => {
+    iconBtn.style.transform = 'scale(1.1)';
+  });
+  iconBtn.addEventListener
