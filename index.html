@@ -2,62 +2,257 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TAREK GAMER DZ</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* ======== الجسم والخلفية ======== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', 'Noto Color Emoji', Arial, sans-serif;
+  overflow-x: hidden;
+  color: white;
+  background: #000;
+}
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+#bg-video {
+  position: fixed;
+  right:0;
+  bottom:0;
+  min-width:100%;
+  min-height:100%;
+  object-fit:cover;
+  z-index:-1;
+}
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+/* ======== الشريط العلوي ======== */
+.top-nav {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background-color:rgba(0,0,0,0.85);
+  padding:12px 20px;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:100;
+  gap:20px;
+}
 
-<!-- CSS -->
-<link rel="stylesheet" href="style.css">
+.top-nav a {
+  color:white;
+  text-decoration:none;
+  padding:8px 14px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.top-nav a:hover {
+  color:#00ffff;
+  transform:scale(1.05);
+}
+
+/* ======== شريط الترحيب أسفل الشريط العلوي ======== */
+.welcome-bar {
+  position:fixed;
+  top:50px;
+  width:100%;
+  background-color:rgba(0,0,0,0.7);
+  overflow:hidden;
+  z-index:99;
+  height:40px;
+}
+
+.welcome-text {
+  color:yellow;
+  font-weight:bold;
+  font-size:18px;
+  white-space:nowrap;
+  display:inline-block;
+  padding-left:100%;
+  animation:scrollText 25s linear infinite;
+}
+
+@keyframes scrollText {
+  0% {transform:translateX(0%);}
+  100% {transform:translateX(-100%);}
+}
+
+/* ======== الشريط الجانبي ======== */
+.sidebar {
+  position:fixed;
+  top:90px;
+  left:0;
+  width:220px;
+  height:100%;
+  background-color:rgba(0,0,0,0.7);
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  z-index:90;
+  border-radius:0 10px 10px 0;
+}
+
+.sidebar a {
+  color:white;
+  text-decoration:none;
+  padding:10px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  transition:0.3s;
+  font-weight:bold;
+}
+
+.sidebar a:hover {
+  background:rgba(0,255,255,0.2);
+}
+
+/* ======== العنوان الرئيسي ======== */
+.main-header {
+  text-align:center;
+  margin-top:140px;
+}
+
+.main-header h1,h2 {
+  margin:5px;
+}
+
+.site-name {
+  color:#00ffff;
+  font-size:48px;
+  text-shadow:0 0 10px #00ffff,0 0 20px #00ffff,0 0 30px #00ffff;
+}
+
+.site-name i {
+  color:#ffd700;
+}
+
+/* ======== بطاقات مواقع التواصل الاجتماعي ======== */
+.social-main {
+  margin-top:20px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+}
+
+.social-main .social-card {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  width:200px;
+  padding:20px;
+  border-radius:20px;
+  color:white;
+  text-align:center;
+  font-weight:bold;
+  transition:0.3s ease, transform 0.3s, box-shadow 0.3s;
+  cursor:pointer;
+}
+
+.social-main .social-card i {
+  font-size:42px;
+  margin-bottom:5px;
+  transition:0.3s;
+}
+
+.social-main .social-card span {
+  font-size:14px;
+  font-weight:bold;
+  color:#ffd700;
+}
+
+.social-main .social-card a {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 20px;
+  border-radius:25px;
+  text-decoration:none;
+  font-weight:bold;
+  color:white;
+  transition:0.3s ease, transform 0.3s;
+}
+
+.social-main .social-card a i {
+  font-size:16px;
+}
+
+.social-main .social-card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 0 20px #00ffff,0 0 25px #ffdd00 inset;
+}
+
+.social-main .social-card a:hover {
+  transform:scale(1.05);
+}
+
+/* ألوان المنصات الرسمية */
+.social-main .instagram { background:#E1306C; }
+.social-main .youtube { background:#FF0000; }
+.social-main .facebook { background:#1877F2; }
+.social-main .telegram { background:#229ED9; }
+.social-main .discord { background:#5865F2; }
+.social-main .tiktok { background:#69C9D0; }
+
+.social-main .instagram a { background:linear-gradient(45deg,#fd1d1d,#833ab4); }
+.social-main .youtube a { background:linear-gradient(45deg,#ff0000,#cc0000); }
+.social-main .facebook a { background:linear-gradient(45deg,#1877F2,#0052a5); }
+.social-main .telegram a { background:linear-gradient(45deg,#229ED9,#006699); }
+.social-main .discord a { background:linear-gradient(45deg,#5865F2,#404eed); }
+.social-main .tiktok a { background:linear-gradient(45deg,#69C9D0,#EE1D52); }
+
+@media(max-width:768px) {
+  .social-main { flex-direction:column; align-items:center; }
+  .social-main .social-card { width:80%; }
+}
+</style>
 </head>
 <body>
 
-<!-- خلفية الفيديو -->
+<!-- فيديو الخلفية -->
 <video autoplay muted loop id="bg-video">
   <source src="video.mp4" type="video/mp4">
 </video>
 
-<!-- أصوات -->
-<audio id="bgMusic" src="music.mp3" loop></audio>
-<audio id="clickSound" src="click.mp3"></audio>
+<!-- موسيقى الخلفية -->
+<audio autoplay loop id="music">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
-<!-- الشريط العلوي -->
+<!-- شريط علوي -->
 <nav class="top-nav">
-  <a href="#"><i class="fa-solid fa-moon"></i><span>رمضان</span></a>
-  <a href="#"><i class="fa-solid fa-store"></i><span>المتجر</span></a>
-  <a href="#"><i class="fa-solid fa-gamepad"></i><span>SA-MP</span></a>
-  <a href="#"><i class="fa-solid fa-heart"></i><span>تبرع</span></a>
-  <a href="#"><i class="fa-solid fa-user"></i><span>المطور</span></a>
-  
-  <div class="currency-counter">
-    <i class="fa-solid fa-coins"></i> <span id="coins">0</span> TBS
-    <i class="fa-solid fa-right-to-bracket login-icon"></i>
-  </div>
+  <a href="ramadan.html"><i class="fa-solid fa-moon"></i> رمضان</a>
+  <a href="shop.html"><i class="fa-solid fa-cart-shopping"></i> المتجر</a>
+  <a href="samp.html"><i class="fa-solid fa-gamepad"></i> SA-MP</a>
+  <a href="donate.html"><i class="fa-solid fa-heart"></i> تبرع</a>
+  <a href="about.html"><i class="fa-solid fa-user"></i> المطور</a>
 </nav>
 
-<!-- شريط الترحيب المتحرك -->
+<!-- شريط الترحيب -->
 <div class="welcome-bar">
-  <div class="welcome-text">
-    مرحبا بيك في موقع صانع المحتوى TAREK GAMER DZ الموقع الأول من نوعه فالجزائر
-  </div>
+  <div class="welcome-text">مرحبا بيك في موقع صانع المحتوى TAREK GAMER DZ الموقع الاول من نوعه فالجزائر</div>
 </div>
 
 <!-- الشريط الجانبي -->
-<aside class="sidebar">
-  <a href="#"><i class="fa-solid fa-gamepad"></i> ألعاب</a>
-  <a href="#"><i class="fa-solid fa-user"></i> البروفايل</a>
-  <a href="#"><i class="fa-solid fa-bullhorn"></i> إعلانات</a>
-  <a href="#"><i class="fa-solid fa-list-check"></i> مهمات</a>
-  <a href="#"><i class="fa-solid fa-coins"></i> عملة الموقع</a>
-  <a href="#"><i class="fa-solid fa-envelope"></i> راسلنا</a>
-  <div class="sidebar-bottom">
-    <a href="#"><i class="fa-solid fa-gear"></i> الإعدادات</a>
-  </div>
-</aside>
+<div class="sidebar">
+  <a href="games.html"><i class="fa-solid fa-gamepad"></i> العاب</a>
+  <a href="profile.html"><i class="fa-solid fa-user"></i> البروفايل</a>
+  <a href="ads.html"><i class="fa-solid fa-bullhorn"></i> اعلانات</a>
+  <a href="tasks.html"><i class="fa-solid fa-tasks"></i> مهمات</a>
+  <a href="currency.html"><i class="fa-solid fa-coins"></i> معلومات عن العملة TBS</a>
+  <a href="contact.html"><i class="fa-solid fa-envelope"></i> راسلنا</a>
+  <a href="settings.html"><i class="fa-solid fa-gear"></i> الاعدادات</a>
+</div>
 
 <!-- العنوان الرئيسي -->
 <header class="main-header">
@@ -66,41 +261,59 @@
   <h2>موقع جزائري 100%</h2>
 </header>
 
-<!-- بطاقات التواصل الاجتماعي – تحت العنوان مباشرة -->
+<!-- بطاقات مواقع التواصل -->
 <div class="social-main">
   <div class="social-card instagram">
     <i class="fab fa-instagram"></i>
     <span>انضم هنا</span>
-    <a href="https://www.instagram.com/tarek.gamer.dz?igsh=MWsyMDFqaThqanJhcQ==" target="_blank">🔗</a>
+    <a href="https://www.instagram.com/tarek.gamer.dz?igsh=MWsyMDFqaThqanJhcQ==" target="_blank">
+      <i class="fas fa-arrow-right"></i> الدخول
+    </a>
   </div>
   <div class="social-card youtube">
     <i class="fab fa-youtube"></i>
     <span>تابعنا</span>
-    <a href="https://youtube.com/@tarek.gamer.dz25" target="_blank">🔗</a>
+    <a href="https://youtube.com/@tarek.gamer.dz25" target="_blank">
+      <i class="fas fa-arrow-right"></i> الدخول
+    </a>
   </div>
   <div class="social-card facebook">
     <i class="fab fa-facebook"></i>
     <span>انضم هنا</span>
-    <a href="https://www.facebook.com/profile.php?id=61584525416113" target="_blank">🔗</a>
+    <a href="https://www.facebook.com/profile.php?id=61584525416113" target="_blank">
+      <i class="fas fa-arrow-right"></i> الدخول
+    </a>
   </div>
   <div class="social-card telegram">
     <i class="fab fa-telegram"></i>
     <span>انضم هنا</span>
-    <a href="https://t.me/tarek_gamer_dz" target="_blank">🔗</a>
+    <a href="https://t.me/tarek_gamer_dz" target="_blank">
+      <i class="fas fa-arrow-right"></i> الدخول
+    </a>
   </div>
   <div class="social-card discord">
     <i class="fab fa-discord"></i>
     <span>انضم هنا</span>
-    <a href="https://discord.gg/qBBmYUJe9" target="_blank">🔗</a>
+    <a href="https://discord.gg/qBBmYUJe9" target="_blank">
+      <i class="fas fa-arrow-right"></i> الدخول
+    </a>
   </div>
   <div class="social-card tiktok">
     <i class="fab fa-tiktok"></i>
     <span>تابعنا</span>
-    <a href="https://vm.tiktok.com/ZS91aw54DmKL7-Wk7Lr/" target="_blank">🔗</a>
+    <a href="https://vm.tiktok.com/ZS91aw54DmKL7-Wk7Lr/" target="_blank">
+      <i class="fas fa-arrow-right"></i> الدخول
+    </a>
   </div>
 </div>
 
-<!-- JS -->
-<script src="script.js"></script>
+<script>
+  // صوت النقر عند الضغط
+  const clickSound = new Audio('click.mp3');
+  document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click',()=>clickSound.play());
+  });
+</script>
+
 </body>
-  </html>
+    </html>
