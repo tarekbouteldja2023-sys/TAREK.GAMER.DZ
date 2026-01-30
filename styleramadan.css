@@ -1,13 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
-body{
+body {
+    font-family:'Cairo',sans-serif;
     margin:0;
     padding:0;
-    font-family:'Cairo',sans-serif;
     color:white;
-    overflow:hidden;
-    text-align:center;
-    background-color:black;
+    overflow-x:hidden;
 }
 
 /* فيديو الخلفية */
@@ -19,16 +17,16 @@ body{
     min-height:100%;
     object-fit:cover;
     z-index:-1;
-    filter:brightness(0.78) contrast(1.15);
+    filter:brightness(0.85) contrast(1.1);
 }
 
 /* موسيقى وصوت النقر */
 audio{display:none;}
 
-/* شريط علوي */
+/* الشريط العلوي */
 .top-nav{
     display:flex;
-    justify-content:flex-start;
+    justify-content:center;
     align-items:center;
     background-color:rgba(0,0,0,0.85);
     padding:12px 20px;
@@ -36,15 +34,11 @@ audio{display:none;}
     top:0;
     width:100%;
     z-index:100;
-    gap:15px;
+    gap:20px;
     border-bottom:2px solid #FFD700;
     box-shadow:0 0 20px #FFD700;
+    border-radius:0 0 10px 10px;
     animation:glowTop 2s infinite alternate;
-}
-@keyframes glowTop{
-    0%{box-shadow:0 0 10px #FFD700;}
-    50%{box-shadow:0 0 20px #FFD700;}
-    100%{box-shadow:0 0 30px #FFD700;}
 }
 .top-nav a{
     color:white;
@@ -55,19 +49,19 @@ audio{display:none;}
     align-items:center;
     gap:5px;
     font-weight:bold;
+    box-shadow:0 0 10px #FFD700 inset;
     transition:0.3s;
 }
 .top-nav a:hover{
+    box-shadow:0 0 15px #FFD700 inset,0 0 20px #FFD700;
     transform:scale(1.05);
-    box-shadow:0 0 25px #FFD700;
 }
-.top-nav span{
-    font-weight:bold;
-    margin-left:20px;
-    color:#FFD700;
+@keyframes glowTop{
+    0%{box-shadow:0 0 15px #FFD700;}
+    100%{box-shadow:0 0 25px #FFD700;}
 }
 
-/* شريط جانبي */
+/* الشريط الجانبي */
 .sidebar{
     position:fixed;
     top:60px;
@@ -78,107 +72,115 @@ audio{display:none;}
     padding:20px;
     display:flex;
     flex-direction:column;
-    gap:20px;
+    gap:15px;
     z-index:90;
     border-radius:0 10px 10px 0;
+    box-shadow:0 0 20px #FFD700;
+    border-right:2px solid #FFD700;
     animation:glowSide 2s infinite alternate;
 }
 @keyframes glowSide{
-    0%{box-shadow:0 0 10px #FFD700;}
-    50%{box-shadow:0 0 15px #FFD700;}
+    0%{box-shadow:0 0 15px #FFD700;}
     100%{box-shadow:0 0 25px #FFD700;}
 }
-.sidebar .date-box{
-    background:rgba(255,255,255,0.05);
+.date-box{
+    background:rgba(255,255,255,0.1);
+    color:#FFD700;
     padding:10px;
-    border-radius:10px;
+    border-radius:8px;
     text-align:center;
-    box-shadow:0 0 10px #FFD700;
-}
-.sidebar .date-box p{
-    margin:5px 0;
+    font-weight:bold;
 }
 
-/* بطاقات الأدعية */
+/* بطاقات الأدعية اليومية */
 .cards-container{
-    position:fixed;
-    top:80px;
-    right:0;
-    width:250px;
-    height:calc(100% - 100px);
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+    margin-top:200px;
+}
+.social-card{
     display:flex;
     flex-direction:column;
-    gap:10px;
+    align-items:center;
+    justify-content:space-between;
+    width:180px;
+    min-height:80px;
+    background:#000;
     padding:10px;
-    z-index:90;
-    overflow-y:auto;
-}
-.card{
-    background:rgba(0,0,0,0.85);
-    padding:12px;
     border-radius:12px;
-    border:3px solid;
-    box-shadow:0 0 12px #fff;
-    color:white;
-    font-weight:bold;
+    border:2px solid #FFD700;
+    box-shadow:0 0 12px #FFD700;
     text-align:center;
-    transition:0.3s;
+    transition:0.3s ease, transform 0.3s, box-shadow 0.3s;
 }
-.card:hover{
+.social-card:hover{
     transform:scale(1.05);
-    box-shadow:0 0 20px #FFD700, 0 0 15px #fff;
+    box-shadow:0 0 15px #FFD700;
 }
-.card.duaa{border-color:#FFD700; box-shadow:0 0 12px #FFD700;}
-.card.hadith{border-color:#1E90FF; box-shadow:0 0 12px #1E90FF;}
-.card.quran{border-color:#32CD32; box-shadow:0 0 12px #32CD32;}
-.card.today{border-color:#FF4500; box-shadow:0 0 20px #FF4500; font-size:16px; animation:glowToday 2s infinite alternate;}
-@keyframes glowToday{
-    0%{box-shadow:0 0 15px #FF4500;}
-    50%{box-shadow:0 0 25px #FF4500;}
-    100%{box-shadow:0 0 35px #FF4500;}
+.social-top{
+    font-size:14px;
+    margin-bottom:6px;
+    font-weight:bold;
+    color:#FFD700;
 }
 
-/* وسط الصفحة - الساعة */
-.main-center{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    color:#FFD700;
+/* الساعة الرقمية الكلاسيكية */
+.mosque-clock{
+    background: rgba(0,0,0,0.5);
+    border: 5px solid #FFD700;
+    border-radius: 20px;
+    padding: 20px 40px;
+    display: inline-block;
     text-align:center;
+    box-shadow:0 0 20px #FFD700 inset;
+    font-family: 'Cairo', serif;
+    margin: 30px auto;
+    animation:glowClock 2s infinite alternate;
 }
-.main-center h1{
+@keyframes glowClock{
+    0%{box-shadow:0 0 20px #FFD700 inset;}
+    100%{box-shadow:0 0 30px #FFD700 inset;}
+}
+#digitalClock{
     font-size:48px;
-    text-shadow:0 0 15px #FFD700;
-    margin-bottom:10px;
+    font-weight:bold;
+    color:#FFD700;
+    text-shadow:0 0 10px #FFD700;
 }
-.main-center h2{
-    font-size:24px;
-    font-weight:700;
+#dayStatus{
+    font-size:20px;
+    color:#FF4500;
+    margin-top:10px;
+    text-shadow:0 0 5px #FF4500;
+}
+#countdownDisplay{
+    font-size:18px;
+    color:#00FF00;
+    margin-top:5px;
 }
 
 /* مواقيت الصلاة */
 .prayer-times{
     position:fixed;
-    bottom:10px;
-    left:50%;
-    transform:translateX(-50%);
-    display:flex;
-    gap:15px;
-    background:rgba(0,0,0,0.7);
-    padding:10px 20px;
-    border-radius:15px;
+    bottom:50px;
+    right:20px;
+    background:rgba(0,0,0,0.5);
+    padding:15px;
+    border-radius:10px;
+    border:2px solid #FFD700;
+    color:#FFD700;
     box-shadow:0 0 15px #FFD700;
 }
-.prayer-times div{
-    text-align:center;
-    font-weight:bold;
-}
 
-/* العداد */
-#countdown{
-    margin-top:10px;
-    font-size:16px;
-    font-weight:bold;
-    color:#FF4500;
+/* الحقوق */
+footer{
+    text-align:center;
+    color:#aaa;
+    padding:10px;
+    font-size:14px;
+    position:fixed;
+    bottom:0;
+    width:100%;
 }
