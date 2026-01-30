@@ -1,186 +1,52 @@
-/* الخط العربي الجميل */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-body {
-  font-family:'Cairo', 'Segoe UI', sans-serif;
-  margin:0;
-  padding:0;
-  color:white;
-  overflow-x:hidden;
-}
-
-#bg-video {
-  position:fixed;
-  right:0; bottom:0;
-  min-width:100%;
-  min-height:100%;
-  object-fit:cover;
-  z-index:-1;
-  filter:brightness(0.85) contrast(1.1);
-}
+body{font-family:'Cairo',sans-serif;margin:0;padding:0;color:white;overflow-x:hidden;}
+#bg-video{position:fixed;right:0;bottom:0;min-width:100%;min-height:100%;object-fit:cover;z-index:-1;filter:brightness(0.85) contrast(1.1);}
+audio{display:none;}
 
 /* الشريط العلوي */
-.top-nav {
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background-color:rgba(0,0,0,0.85);
-  padding:12px 20px;
-  position:fixed;
-  top:0;
-  width:100%;
-  z-index:100;
-  gap:20px;
-  border-bottom:2px solid #00ff00;
-  box-shadow:0 0 20px #00ff00;
-  border-radius:0 0 10px 10px;
-}
-.top-nav a {
-  color:white;
-  text-decoration:none;
-  padding:8px 14px;
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  gap:5px;
-  font-weight:bold;
-  transition:0.3s;
-  box-shadow:0 0 10px #00ff00 inset;
-}
-.top-nav a:hover{
-  box-shadow:0 0 15px #00ff00 inset,0 0 20px #00ff00;
-  transform:scale(1.05);
-}
-#tbs-display{
-  margin-left:20px;
-  font-weight:bold;
-  color:#00ff00;
-  text-shadow:0 0 8px #00ff00;
-}
+.top-nav{display:flex;justify-content:center;align-items:center;background-color:rgba(0,0,0,0.85);padding:12px 20px;position:fixed;top:0;width:100%;z-index:100;gap:15px;border-bottom:2px solid #0ff;box-shadow:0 0 20px #0ff;border-radius:0 0 10px 10px;}
+.top-nav a{color:white;text-decoration:none;padding:6px 12px;border-radius:10px;display:flex;align-items:center;gap:5px;font-weight:bold;box-shadow:0 0 10px #0ff inset;transition:0.3s;}
+.top-nav a:hover{box-shadow:0 0 15px #0ff inset,0 0 20px #0ff;transform:scale(1.05);}
+#tbs-display{margin-left:20px;font-weight:bold;color:#0f0;text-shadow:0 0 8px #0f0;}
 
 /* شريط الترحيب */
-.welcome-bar{
-  position:fixed;
-  top:60px;
-  width:100%;
-  background-color:rgba(0,0,0,0.6);
-  overflow:hidden;
-  z-index:99;
-  height:40px;
-  border-bottom:2px solid #00ff00;
-  box-shadow:0 0 15px #00ff00;
-}
-.welcome-text{
-  color:white;
-  font-weight:900;
-  font-size:18px;
-  white-space:nowrap;
-  display:inline-block;
-  padding-left:100%;
-  animation:scrollText 25s linear infinite;
-}
-@keyframes scrollText{
-  0% {transform:translateX(0%);}
-  100% {transform:translateX(-100%);}
-}
+.welcome-bar{position:fixed;top:60px;width:100%;background-color:rgba(0,0,0,0.6);overflow:hidden;z-index:99;height:40px;border-bottom:2px solid #0ff;box-shadow:0 0 15px #0ff;}
+.welcome-text{color:white;font-weight:900;font-size:18px;white-space:nowrap;display:inline-block;padding-left:100%;animation:scrollText 25s linear infinite;}
+@keyframes scrollText{0%{transform:translateX(0%);}100%{transform:translateX(-100%);}}
 
-/* الشريط الجانبي */
-.sidebar{
-  position:fixed;
-  top:100px;
-  left:0;
-  width:220px;
-  height:calc(100% - 100px);
-  background-color:rgba(0,0,0,0.85);
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-  gap:15px;
-  z-index:90;
-  border-radius:0 10px 10px 0;
-  box-shadow:0 0 20px #00ff00;
-  border-right:2px solid #00ff00;
-}
-.sidebar a{
-  color:white;
-  text-decoration:none;
-  padding:10px;
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:bold;
-  box-shadow:0 0 10px #00ff00 inset;
-  transition:0.3s;
-}
-.sidebar a:hover{
-  background:rgba(0,255,0,0.2);
-  box-shadow:0 0 15px #00ff00 inset,0 0 20px #00ff00;
-}
-.sidebar a.bottom{
-  margin-top:auto;
-  margin-bottom:10px;
-}
+.sidebar{position:fixed;top:100px;left:0;width:220px;height:calc(100% - 100px);background-color:rgba(0,0,0,0.85);padding:20px;display:flex;flex-direction:column;gap:15px;z-index:90;border-radius:0 10px 10px 0;box-shadow:0 0 20px #0ff;border-right:2px solid #0ff;}
+.sidebar a{color:white;text-decoration:none;padding:10px;border-radius:10px;display:flex;align-items:center;gap:10px;font-weight:bold;box-shadow:0 0 10px #0ff inset;transition:0.3s;}
+.sidebar a:hover{background:rgba(0,255,255,0.2);box-shadow:0 0 15px #0ff inset,0 0 20px #0ff;}
+.sidebar a.bottom{margin-top:auto;margin-bottom:10px;}
 
 /* العنوان الرئيسي */
 .main-header{text-align:center;margin-top:160px;}
 .main-header h1,h2{margin:5px;}
-.site-name{
-  color:#00ff00;
-  font-size:48px;
-  font-weight:bold;
-  text-shadow:0 0 5px #00ff00;
-}
+.site-name{color:#0ff;font-size:48px;font-weight:bold;text-shadow:0 0 5px #0ff;}
 .site-name i{color:#ffd700;text-shadow:0 0 10px #ffd700;}
 
 /* بطاقات مواقع التواصل */
-.social-main{
-  margin-top:20px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:15px;
-}
-.social-card{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:space-between;
-  width:220px;
-  background:#000;
-  padding:12px 20px;
-  border-radius:12px;
-  border:2px solid #00ff00;
-  box-shadow:0 0 12px #00ff00;
-  color:white;
-  font-weight:bold;
-  text-align:center;
-  transition:0.3s ease, transform 0.3s, box-shadow 0.3s;
-}
-.social-top{
-  font-size:14px;
-  margin-bottom:8px;
-  color:#00ff00;
-  font-weight:bold;
-}
-.social-card i{font-size:28px;margin-bottom:6px;}
+.social-main{margin-top:20px;display:flex;flex-direction:column;align-items:center;gap:15px;}
+.social-card{display:flex;flex-direction:column;align-items:center;justify-content:space-between;width:180px;background:#000;padding:10px;border-radius:12px;border:2px solid;box-shadow:0 0 12px;transition:0.3s ease,transform 0.3s,box-shadow 0.3s;text-align:center;}
+.social-top{font-size:14px;margin-bottom:6px;font-weight:bold;}
+.social-card span{font-size:16px;margin-bottom:4px;font-weight:bold;}
+.social-card p{font-size:13px;color:#ccc;margin-bottom:6px;}
+.social-card a{display:inline-block;padding:6px 12px;border-radius:20px;text-decoration:none;font-weight:bold;color:white;background:rgba(0,255,0,0.2);transition:0.3s;}
+.social-card a:hover{background:rgba(0,255,0,0.5);transform:scale(1.05);}
+
+/* ألوان رموز مختلفة لكل منصة */
+.instagram{border-color:#8A2BE2;box-shadow:0 0 12px #8A2BE2;} 
 .instagram i{color:#8A2BE2;}
+.youtube{border-color:#FF0000;box-shadow:0 0 12px #FF0000;}
 .youtube i{color:#FF0000;}
+.facebook{border-color:#1877F2;box-shadow:0 0 12px #1877F2;}
 .facebook i{color:#1877F2;}
+.telegram{border-color:#00BFFF;box-shadow:0 0 12px #00BFFF;}
 .telegram i{color:#00BFFF;}
+.discord{border-color:#7289DA;box-shadow:0 0 12px #7289DA;}
 .discord i{color:#7289DA;}
-.tiktok i{color:#000000;}
-.social-card span{font-size:16px;margin-bottom:8px;font-weight:bold;}
-.social-card a{
-  display:inline-block;
-  padding:6px 14px;
-  border-radius:20px;
-  text-decoration:none;
-  font-weight:bold;
-  color:white;
-  background:rgba(0,255,0,0.2);
-  transition:0.3s;
-}
-.social-card a:hover{
-  background:rgba(0,255,0,0.5);
-  transform:scale(1.05);
-}
+.tiktok{border-color:#000;box-shadow:0 0 12px #000;}
+.tiktok i{color:#000;}
+
+/* التذييل */
+footer{text-align:center;color:#aaa;padding:10px;font-size:14px;position:fixed;bottom:0;width:100%;}
