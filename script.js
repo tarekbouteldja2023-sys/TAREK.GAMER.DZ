@@ -1,7 +1,6 @@
-// تشغيل الموسيقى بعد أول نقرة + صوت النقر
 document.addEventListener("click", () => {
   const music = document.getElementById("bgMusic");
-  if (music.paused) music.play().catch(() => console.log("Click to enable audio"));
+  if (music.paused) music.play().catch(() => console.log("اضغط لتشغيل الصوت"));
 
   const click = document.getElementById("clickSound");
   click.currentTime = 0;
