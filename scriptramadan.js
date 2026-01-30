@@ -1,89 +1,65 @@
-// الأصوات
-function playClick(){ document.getElementById('click-sound').play(); }
+// عناصر الساعة
+const clockEl = document.getElementById('digital-clock');
+const countdownEl = document.getElementById('ramadan-countdown');
 
-// تحديث الساعة الرقمية
-function updateClock(){
-    const now = new Date();
-    let h=now.getHours().toString().padStart(2,'0');
-    let m=now.getMinutes().toString().padStart(2,'0');
-    let s=now.getSeconds().toString().padStart(2,'0');
-    document.getElementById("mosque-clock").innerHTML = `${h}:${m}:${s}`;
-}
-setInterval(updateClock,1000);
-updateClock();
+// تحديد موعد رمضان 2026
+const ramadanStart = new Date('2026-02-17T00:00:00');
 
-// عداد رمضان
-let ramadanStart = new Date('2026-02-17T00:00:00'); // بداية رمضان المتوقعة
-function updateCountdown(){
-    let now = new Date();
-    let diff = ramadanStart - now;
-    if(diff<=0){
-        document.getElementById("countdown").style.display='none';
-        return;
-    }
-    let days = Math.floor(diff/1000/60/60/24);
-    let hours = Math.floor(diff/1000/60/60)%24;
-    let minutes = Math.floor(diff/1000/60)%60;
-    let seconds = Math.floor(diff/1000)%60;
-    document.getElementById("countdown").innerHTML = `${days} يوم ${hours} ساعة ${minutes} دقيقة ${seconds} ثانية`;
-}
-setInterval(updateCountdown,1000);
-updateCountdown();
-
-// التاريخ الميلادي والهجري (تقريبي)
+// دالة لتحديث التاريخ الميلادي والهجري
 function updateDates(){
-    const now = new Date();
-    document.getElementById('gregorian-date').innerText = now.toLocaleDateString('ar-EG');
-    const hijriYear = now.getFullYear() - 579;
-    document.getElementById('hijri-date').innerText = hijriYear + ' هـ';
+  const now = new Date();
+  // ميلادي
+  document.getElementById('gregorian-date').innerText = now.toLocaleDateString('ar-EG');
+  // هجري (تقريبًا)
+  const hijri = new Intl.DateTimeFormat('ar-SA-u-ca-islamic',{day:'numeric',month:'long',year:'numeric'}).format(now);
+  document.getElementById('hijri-date').innerText = hijri;
 }
+
+// دالة الساعة الرقمية
+function updateClock(){
+  const now = new Date();
+  let h=String(now.getHours()).padStart(2,'0');
+  let m=String(now.getMinutes()).padStart(2,'0');
+  let s=String(now.getSeconds()).padStart(2,'0');
+  clockEl.innerText = `${h}:${m}:${s}`;
+}
+
+// دالة العد التنازلي
+function updateCountdown(){
+  const now = new Date();
+  let diff = ramadanStart - now;
+  if(diff <=0){
+    countdownEl.style.display='none';
+  } else {
+    let days = Math.floor(diff/(1000*60*60*24));
+    let hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    let minutes = Math.floor((diff%(1000*60*60))/(1000*60));
+    let seconds = Math.floor((diff%(1000*60))/1000);
+    countdownEl.innerText = `${days} يوم ${hours} ساعة ${minutes} دقيقة ${seconds} ثانية`;
+  }
+}
+
+// تحديث مواعيد الصلاة (قيمة تقريبية يومية)
+function updatePrayerTimes(){
+  // هنا قيم ثابتة يمكنك لاحقاً تحديثها ديناميكيًا
+  const times = {
+    fajr:'05:30',
+    shurooq:'06:45',
+    dhuhr:'12:15',
+    asr:'15:30',
+    maghrib:'18:00',
+    isha:'19:30'
+  };
+  for(let key in times){
+    document.getElementById(key).innerText = times[key];
+  }
+}
+
+// تحديث دوري كل ثانية
+setInterval(updateClock,1000);
+setInterval(updateCountdown,1000);
+setInterval(updateDates,60000);
+updateClock();
+updateCountdown();
 updateDates();
-
-// بيانات 30 يوم رمضان: دعاء + آية + حديث
-const dailyData = [
-  {dua:'اللهم اجعلني من عبادك الصالحين', ayah:'﴿اللَّهُ لا إِلَـهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ﴾', hadith:'عن أبي هريرة: قال رسول الله ﷺ: «من صام رمضان إيمانًا واحتسابًا غُفر له»'},
-  {dua:'اللهم ارزقني حبك وحب من يحبك', ayah:'﴿فَإِنَّ مَعَ الْعُسْرِ يُسْرًا﴾', hadith:'«من قام ليلة القدر إيمانًا واحتسابًا غفر له ما تقدم من ذنبه»'},
-  {dua:'اللهم اجعل قلبي مطمئناً بذكرك', ayah:'﴿وَمَا تَوْفِيقِي إِلَّا بِاللَّهِ﴾', hadith:'«الدين النصيحة»'},
-  {dua:'اللهم اجعل عملي خالصاً لوجهك الكريم', ayah:'﴿وَاصْبِرْ وَمَا صَبْرُكَ إِلَّا بِاللَّهِ﴾', hadith:'«لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه»'},
-  {dua:'اللهم ارزقني القناعة', ayah:'﴿وَاعْبُدُوا اللَّهَ وَلَا تُشْرِكُوا بِهِ شَيْئًا﴾', hadith:'«المسلم من سلم المسلمون من لسانه ويده»'},
-  {dua:'اللهم اجعل لي نوراً في قلبي وبيتي', ayah:'﴿وَقُلْ رَبِّ زِدْنِي عِلْمًا﴾', hadith:'«الطهور شطر الإيمان»'},
-  {dua:'اللهم اجعل لي من كل هم فرجاً', ayah:'﴿وَمَنْ يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا﴾', hadith:'«من حسن إسلام المرء تركه ما لا يعنيه»'},
-  {dua:'اللهم اجعل آخر كلامي من الدنيا شهادة أن لا إله إلا الله', ayah:'﴿إِنَّ اللَّهَ مَعَ الصَّابِرِينَ﴾', hadith:'«المؤمن القوي خير وأحب إلى الله من المؤمن الضعيف»'},
-  {dua:'اللهم اجعلني من الذين يستمعون القول فيتبعون أحسنه', ayah:'﴿وَأَقِمِ الصَّلَاةَ وَآتِ الزَّكَاةَ﴾', hadith:'«من دل على خير فله مثل أجر فاعله»'},
-  {dua:'اللهم اجعل لي نصيباً من كل خير', ayah:'﴿وَلَا تَهِنُوا وَلَا تَحْزَنُوا﴾', hadith:'«ألا أدلكم على ما يمحو الله به الخطايا ويرفع به الدرجات؟» قالوا: بلى، قال: «الصوم والصلاة والصدقة»'},
-  {dua:'اللهم احفظني من كل شر', ayah:'﴿إِنَّمَا يَسْتَجِيبُ الَّذِينَ يَسْمَعُونَ﴾', hadith:'«حبّب إليَّ من دنياكم النساء والطيب والصلاة»'},
-  {dua:'اللهم اجعل قلبي خاشعاً بين يديك', ayah:'﴿وَاتَّقُوا يَوْمًا تُرْجَعُونَ فِيهِ إِلَى اللَّهِ﴾', hadith:'«خيركم من تعلم القرآن وعلمه»'},
-  {dua:'اللهم اجعل عملي خالياً من الرياء', ayah:'﴿فَاذْكُرُونِي أَذْكُرْكُمْ﴾', hadith:'«ليس الشديد بالصرعة، إنما الشديد من يملك نفسه عند الغضب»'},
-  {dua:'اللهم اجعل رزقي واسعاً حلالاً طيباً', ayah:'﴿وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ﴾', hadith:'«من صبر ظفر»'},
-  {dua:'اللهم اجعلني من الذين يدخلون الجنة بلا حساب', ayah:'﴿إِنَّ رَبِّي قَرِيبٌ مُجِيبٌ﴾', hadith:'«أصدقاؤكم من صَحِبتموه على دينه»'},
-  {dua:'اللهم اجعل لي من كل كرب مخرجاً', ayah:'﴿وَلِلَّهِ غَيْبُ السَّمَاوَاتِ وَالْأَرْضِ﴾', hadith:'«من أحب أن يُبسط له في رزقه ويُنسأ له في أثره فليصل رحمه»'},
-  {dua:'اللهم اجعل لي في كل خطوة توفيقاً', ayah:'﴿رَبَّنَا لَا تُؤَاخِذْنَا إِن نَّسِينَا أَوْ أَخْطَأْنَا﴾', hadith:'«من حسن إسلام المرء تركه ما لا يعنيه»'},
-  {dua:'اللهم اجعل قلبي راضياً بقضائك', ayah:'﴿إِنَّ اللَّهَ يُحِبُّ الْمُحْسِنِينَ﴾', hadith:'«لا حسد إلا في اثنتين»'},
-  {dua:'اللهم اجعل سعادتي في رضاك', ayah:'﴿وَمَا أَرْسَلْنَاكَ إِلَّا رَحْمَةً لِّلْعَالَمِينَ﴾', hadith:'«الصيام جنة»'},
-  {dua:'اللهم ثبتني على دينك', ayah:'﴿وَلَا تَقْتُلُوا أَوْلَادَكُمْ مِنْ إِمْلَاقٍ﴾', hadith:'«الحياء من الإيمان»'},
-  {dua:'اللهم اجعلني من الشاكرين لنعمك', ayah:'﴿وَاتَّقُوا اللَّهَ وَيُعَلِّمُكُمُ اللَّهُ﴾', hadith:'«من ستر مسلمًا ستره الله في الدنيا والآخرة»'},
-  {dua:'اللهم اجعلني من عبادك المخلصين', ayah:'﴿وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ﴾', hadith:'«من صلى عليّ صلاة صلى الله عليه بها عشراً»'},
-  {dua:'اللهم اجعل لي نصيباً من كل خير', ayah:'﴿فَإِنَّ اللَّهَ غَفُورٌ رَّحِيمٌ﴾', hadith:'«من أحب أن يُبسط له في رزقه ويُنسأ له في أثره فليصل رحمه»'},
-  {dua:'اللهم ارزقني حب العباد وحب الخلق', ayah:'﴿يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ﴾', hadith:'«خيركم من كان خيرًا لأهله»'},
-  {dua:'اللهم اجعل قلبي مطمئناً بذكرك', ayah:'﴿وَلَا تَسْتَوِي الْحَسَنَةُ وَلَا السَّيِّئَةُ﴾', hadith:'«من كتم علمًا ألجمه الله بلجام من نار يوم القيامة»'},
-  {dua:'اللهم اجعل عملي خالصاً لوجهك الكريم', ayah:'﴿وَأَقِمِ الصَّلَاةَ لِذِكْرِي﴾', hadith:'«من غشنا فليس منا»'},
-  {dua:'اللهم اجعل رزقي واسعاً حلالاً طيباً', ayah:'﴿رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ﴾', hadith:'«من صبر ظفر»'},
-  {dua:'اللهم اجعلني من الذين يدخلون الجنة بلا حساب', ayah:'﴿وَاصْبِرْ عَلَىٰ مَا أَصَابَكَ﴾', hadith:'«الأصدقاء من صَحِبتموه على دينه»'},
-  {dua:'اللهم اجعل لي من كل كرب مخرجاً', ayah:'﴿إِنَّ مَعَ الْعُسْرِ يُسْرًا﴾', hadith:'«من أحب أن يُبسط له في رزقه ويُنسأ له في أثره»'},
-  {dua:'اللهم اجعل لي في كل خطوة توفيقاً', ayah:'﴿وَاعْبُدُوا رَبَّكُمْ حَتَّىٰ يَأْتِيَكُمُ الْيَقِينُ﴾', hadith:'«الأعمال بالنيات»'},
-];
-
-// توليد البطاقة اليومية الحالية
-const today = new Date();
-const dayOfRamadan = today.getDate() - new Date('2026-02-17').getDate(); // اليوم الحالي بالنسبة لبداية رمضان
-const cardsContainer = document.getElementById('daily-cards');
-if(dayOfRamadan>=0 && dayOfRamadan<30){
-  const todayData = dailyData[dayOfRamadan];
-  let card = document.createElement('div');
-  card.className='daily-card';
-  card.innerHTML = `<h4>اليوم ${dayOfRamadan+1}</h4>
-  <p><strong>دعاء:</strong> ${todayData.dua}</p>
-  <p><strong>آية:</strong> ${todayData.ayah}</p>
-  <p><strong>حديث:</strong> ${todayData.hadith}</p>`;
-  cardsContainer.appendChild(card);
-}
+updatePrayerTimes();
