@@ -1,16 +1,16 @@
+/* الخط العربي الجميل */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 body {
+  font-family:'Cairo', 'Segoe UI', sans-serif;
   margin:0;
   padding:0;
-  font-family:'Segoe UI','Noto Color Emoji',Arial,sans-serif;
-  overflow-x:hidden;
   color:white;
-  background:#000;
+  overflow-x:hidden;
 }
 
 #bg-video {
   position:fixed;
-  right:0;
-  bottom:0;
+  right:0; bottom:0;
   min-width:100%;
   min-height:100%;
   object-fit:cover;
@@ -18,7 +18,7 @@ body {
   filter:brightness(0.85) contrast(1.1);
 }
 
-/* ===== الشريط العلوي ===== */
+/* الشريط العلوي */
 .top-nav {
   display:flex;
   justify-content:center;
@@ -30,11 +30,10 @@ body {
   width:100%;
   z-index:100;
   gap:20px;
-  border-bottom:2px solid #00ffff;
-  box-shadow:0 0 20px #00ffff;
+  border-bottom:2px solid #00ff00;
+  box-shadow:0 0 20px #00ff00;
   border-radius:0 0 10px 10px;
 }
-
 .top-nav a {
   color:white;
   text-decoration:none;
@@ -45,23 +44,21 @@ body {
   gap:5px;
   font-weight:bold;
   transition:0.3s;
-  box-shadow:0 0 10px #00ffff inset; /* إطار مضيء */
+  box-shadow:0 0 10px #00ff00 inset;
 }
-
-.top-nav a:hover {
-  box-shadow:0 0 15px #00ffff inset,0 0 20px #00ffff;
+.top-nav a:hover{
+  box-shadow:0 0 15px #00ff00 inset,0 0 20px #00ff00;
   transform:scale(1.05);
 }
-
-#tbs-display {
+#tbs-display{
   margin-left:20px;
   font-weight:bold;
-  color:#ffdd00;
-  text-shadow:0 0 8px #ffdd00;
+  color:#00ff00;
+  text-shadow:0 0 8px #00ff00;
 }
 
-/* ===== شريط الترحيب ===== */
-.welcome-bar {
+/* شريط الترحيب */
+.welcome-bar{
   position:fixed;
   top:60px;
   width:100%;
@@ -69,11 +66,10 @@ body {
   overflow:hidden;
   z-index:99;
   height:40px;
-  border-bottom:2px solid #ffdd00;
-  box-shadow:0 0 15px #ffdd00;
+  border-bottom:2px solid #00ff00;
+  box-shadow:0 0 15px #00ff00;
 }
-
-.welcome-text {
+.welcome-text{
   color:white;
   font-weight:900;
   font-size:18px;
@@ -82,14 +78,13 @@ body {
   padding-left:100%;
   animation:scrollText 25s linear infinite;
 }
-
 @keyframes scrollText{
   0% {transform:translateX(0%);}
   100% {transform:translateX(-100%);}
 }
 
-/* ===== الشريط الجانبي ===== */
-.sidebar {
+/* الشريط الجانبي */
+.sidebar{
   position:fixed;
   top:100px;
   left:0;
@@ -102,11 +97,10 @@ body {
   gap:15px;
   z-index:90;
   border-radius:0 10px 10px 0;
-  box-shadow:0 0 20px #00ffff;
-  border-right:2px solid #00ffff;
+  box-shadow:0 0 20px #00ff00;
+  border-right:2px solid #00ff00;
 }
-
-.sidebar a {
+.sidebar a{
   color:white;
   text-decoration:none;
   padding:10px;
@@ -114,114 +108,79 @@ body {
   display:flex;
   align-items:center;
   gap:10px;
-  transition:0.3s;
   font-weight:bold;
-  box-shadow:0 0 10px #00ffff inset; /* إطار أيقونة مضيء */
+  box-shadow:0 0 10px #00ff00 inset;
+  transition:0.3s;
 }
-
-.sidebar a:hover {
-  background:rgba(0,255,255,0.2);
-  box-shadow:0 0 15px #00ffff inset,0 0 20px #00ffff;
+.sidebar a:hover{
+  background:rgba(0,255,0,0.2);
+  box-shadow:0 0 15px #00ff00 inset,0 0 20px #00ff00;
 }
-
 .sidebar a.bottom{
   margin-top:auto;
   margin-bottom:10px;
 }
 
-/* ===== العنوان الرئيسي ===== */
-.main-header {
-  text-align:center;
-  margin-top:160px;
-}
-
-.main-header h1,h2{
-  margin:5px;
-}
-
+/* العنوان الرئيسي */
+.main-header{text-align:center;margin-top:160px;}
+.main-header h1,h2{margin:5px;}
 .site-name{
-  color:#00ffff;
+  color:#00ff00;
   font-size:48px;
   font-weight:bold;
-  text-shadow:0 0 5px #00ffff; /* ضوء عادي */
+  text-shadow:0 0 5px #00ff00;
 }
+.site-name i{color:#ffd700;text-shadow:0 0 10px #ffd700;}
 
-.site-name i{
-  color:#ffd700;
-  text-shadow:0 0 10px #ffd700; 
-}
-
-/* ===== بطاقات مواقع التواصل الاجتماعي ===== */
+/* بطاقات مواقع التواصل */
 .social-main{
   margin-top:20px;
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:12px;
+  gap:15px;
 }
-
-.social-main .social-card{
+.social-card{
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:space-between;
-  width:200px;
+  width:220px;
+  background:#000;
   padding:12px 20px;
   border-radius:12px;
+  border:2px solid #00ff00;
+  box-shadow:0 0 12px #00ff00;
   color:white;
   font-weight:bold;
-  cursor:pointer;
-  transition:0.3s ease, transform 0.3s, box-shadow 0.3s;
-  border:2px solid;
-  box-shadow:0 0 8px #fff inset;
   text-align:center;
+  transition:0.3s ease, transform 0.3s, box-shadow 0.3s;
 }
-
-.social-main .social-card i{
-  font-size:26px;
-  margin-bottom:6px;
-  transition:0.3s ease;
-  text-shadow:0 0 5px #fff;
-}
-
-.social-main .social-card:hover i{
-  text-shadow:0 0 10px #fff,0 0 15px #00ffff;
-  transform:scale(1.15);
-}
-
-.social-main .social-card span{
-  font-size:15px;
+.social-top{
+  font-size:14px;
+  margin-bottom:8px;
+  color:#00ff00;
   font-weight:bold;
 }
-
-.social-main .social-card a{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:5px 12px;
+.social-card i{font-size:28px;margin-bottom:6px;}
+.instagram i{color:#8A2BE2;}
+.youtube i{color:#FF0000;}
+.facebook i{color:#1877F2;}
+.telegram i{color:#00BFFF;}
+.discord i{color:#7289DA;}
+.tiktok i{color:#000000;}
+.social-card span{font-size:16px;margin-bottom:8px;font-weight:bold;}
+.social-card a{
+  display:inline-block;
+  padding:6px 14px;
   border-radius:20px;
   text-decoration:none;
   font-weight:bold;
   color:white;
-  transition:0.3s ease, transform 0.3s;
+  background:rgba(0,255,0,0.2);
+  transition:0.3s;
 }
-
-/* ألوان المنصات */
-.instagram{background:#8A2BE2; border-color:#8A2BE2;}
-.youtube{background:#FF0000; border-color:#FF0000;}
-.facebook{background:#0D3B66; border-color:#0D3B66;}
-.telegram{background:#00BFFF; border-color:#00BFFF;}
-.discord{background:#FFD700; border-color:#FFD700;}
-.tiktok{background:#000000; border-color:#000000;}
-
-.social-main .social-card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 0 12px #00ffff,0 0 15px #ffdd00 inset;
+.social-card a:hover{
+  background:rgba(0,255,0,0.5);
+  transform:scale(1.05);
 }
-
-.social-top{
-  font-size:13px;
-  margin-bottom:5px;
-  color:white;
-  font-weight:bold;
-  }
