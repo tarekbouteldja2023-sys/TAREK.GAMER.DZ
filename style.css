@@ -45,27 +45,28 @@ body {
   gap:5px;
   font-weight:bold;
   transition:0.3s;
+  text-shadow:0 0 5px #00ffff;
 }
 
 .top-nav a:hover {
   color:#00ffff;
   transform:scale(1.05);
-  text-shadow:0 0 10px #00ffff;
+  text-shadow:0 0 15px #00ffff,0 0 25px #ffdd00;
 }
 
 #tbs-display {
   margin-left:20px;
   font-weight:bold;
   color:#ffdd00;
-  text-shadow:0 0 8px #ffdd00;
+  text-shadow:0 0 8px #ffdd00,0 0 15px #ffdd00;
 }
 
 /* ===== شريط الترحيب ===== */
 .welcome-bar {
   position:fixed;
-  top:60px; /* خفضه قليلا */
+  top:60px;
   width:100%;
-  background-color:rgba(255,255,255,0.9);
+  background-color:rgba(0,0,0,0.6);
   overflow:hidden;
   z-index:99;
   height:40px;
@@ -74,8 +75,8 @@ body {
 }
 
 .welcome-text {
-  color:black; /* تعديل اللون */
-  font-weight:bold;
+  color:white;
+  font-weight:900;
   font-size:18px;
   white-space:nowrap;
   display:inline-block;
@@ -149,9 +150,10 @@ body {
 
 .site-name i{
   color:#ffd700;
+  text-shadow:0 0 10px #ffd700,0 0 15px #ffd700;
 }
 
-/* ===== بطاقات مواقع التواصل الاجتماعي عمودية ===== */
+/* ===== بطاقات مواقع التواصل الاجتماعي ===== */
 .social-main{
   margin-top:20px;
   display:flex;
@@ -162,22 +164,31 @@ body {
 
 .social-main .social-card{
   display:flex;
-  flex-direction:row;
+  flex-direction:column;
   align-items:center;
   justify-content:space-between;
   width:250px;
   padding:12px 20px;
   border-radius:15px;
-  color:black; /* الكتابة داخلها */
+  color:white;
   font-weight:bold;
   cursor:pointer;
   transition:0.3s ease, transform 0.3s, box-shadow 0.3s;
   border:2px solid;
   box-shadow:0 0 10px #fff inset;
+  text-align:center;
 }
 
 .social-main .social-card i{
   font-size:28px;
+  margin-bottom:6px;
+  transition:0.3s ease;
+  text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 15px #fff;
+}
+
+.social-main .social-card:hover i{
+  text-shadow:0 0 10px #fff,0 0 20px #fff,0 0 30px #00ffff,0 0 40px #ffdd00,0 0 50px #00ffff;
+  transform:scale(1.2);
 }
 
 .social-main .social-card span{
@@ -197,15 +208,22 @@ body {
   transition:0.3s ease, transform 0.3s;
 }
 
-/* ألوان المنصات الأصلية */
-.instagram{background:#E1306C; border-color:#E1306C;}
+/* ألوان المنصات */
+.instagram{background:#8A2BE2; border-color:#8A2BE2;}
 .youtube{background:#FF0000; border-color:#FF0000;}
-.facebook{background:#1877F2; border-color:#1877F2;}
-.telegram{background:#229ED9; border-color:#229ED9;}
-.discord{background:#5865F2; border-color:#5865F2;}
-.tiktok{background:#69C9D0; border-color:#69C9D0;}
+.facebook{background:#0D3B66; border-color:#0D3B66;}
+.telegram{background:#00BFFF; border-color:#00BFFF;}
+.discord{background:#FFD700; border-color:#FFD700;}
+.tiktok{background:#000000; border-color:#000000;}
 
 .social-main .social-card:hover{
   transform:translateY(-3px);
   box-shadow:0 0 20px #00ffff,0 0 25px #ffdd00 inset;
+}
+
+.social-top{
+  font-size:14px;
+  margin-bottom:5px;
+  color:white;
+  font-weight:bold;
 }
