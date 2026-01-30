@@ -54,11 +54,15 @@ html, body { width:100%; height:100%; font-family:'Cairo', 'Roboto', Arial, sans
 .main-header .site-name { font-family:'Roboto', sans-serif; color:#ffdd00; font-size:44px; text-shadow:0 0 5px #ffdd00,0 0 10px #00ffff,0 0 15px #ffdd00,0 0 20px #00ffff; }
 .main-header h2 { font-family:'Cairo', sans-serif; font-size:22px; color:#ffd700; text-shadow:0 0 6px #ffd700,0 0 12px #ffd700; margin-top:8px; }
 
-/* بطاقات التواصل الاجتماعي عمودية */
-.social-bottom {
-  position:fixed; bottom:15px; left:20px; display:flex; flex-direction:column; gap:18px; z-index:100;
+/* بطاقات التواصل الاجتماعي تحت العنوان */
+.social-main {
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
 }
-.social-bottom .social-card {
+.social-main .social-card {
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
   padding:18px 20px; border-radius:20px;
   background:linear-gradient(135deg,#111,#222);
@@ -66,23 +70,23 @@ html, body { width:100%; height:100%; font-family:'Cairo', 'Roboto', Arial, sans
   color:white; font-weight:bold; text-align:center;
   transition:0.3s ease, transform 0.3s, box-shadow 0.3s;
 }
-.social-bottom .social-card i { font-size:42px; margin-bottom:5px; transition:0.3s; }
-.social-bottom .social-card span { font-size:14px; color:#ffd700; font-weight:bold; }
-.social-bottom .social-card a {
+.social-main .social-card i { font-size:42px; margin-bottom:5px; transition:0.3s; }
+.social-main .social-card span { font-size:14px; color:#ffd700; font-weight:bold; }
+.social-main .social-card a {
   display:inline-block; padding:8px 20px; border-radius:25px;
   background:linear-gradient(45deg,#00c6ff,#0072ff); color:white; font-weight:bold; text-decoration:none;
   transition:0.3s ease, transform 0.3s;
 }
-.social-bottom .social-card:hover { transform:translateX(5px); box-shadow:0 0 20px #00ffff,0 0 25px #ffdd00 inset; }
-.social-bottom .social-card a:hover { transform:scale(1.05); background:linear-gradient(45deg,#ff6a00,#ee0979); }
+.social-main .social-card:hover { transform:translateY(-5px); box-shadow:0 0 20px #00ffff,0 0 25px #ffdd00 inset; }
+.social-main .social-card a:hover { transform:scale(1.05); background:linear-gradient(45deg,#ff6a00,#ee0979); }
 
 /* ألوان أيقونات المنصات */
-.social-bottom .instagram i { color:#E1306C; }
-.social-bottom .youtube i { color:#FF0000; }
-.social-bottom .facebook i { color:#1877F2; }
-.social-bottom .telegram i { color:#229ED9; }
-.social-bottom .discord i { color:#5865F2; }
-.social-bottom .tiktok i { color:#69C9D0; }
+.social-main .instagram i { color:#E1306C; }
+.social-main .youtube i { color:#FF0000; }
+.social-main .facebook i { color:#1877F2; }
+.social-main .telegram i { color:#229ED9; }
+.social-main .discord i { color:#5865F2; }
+.social-main .tiktok i { color:#69C9D0; }
 
 /* استجابة الشاشات الصغيرة */
-@media(max-width:768px){ .sidebar{display:none;} .social-bottom{left:5px;} }
+@media(max-width:768px){ .sidebar{display:none;} .social-main{flex-direction:column; align-items:center;} }
