@@ -18,11 +18,11 @@ function toggleMusic() {
 let userCoins = 0;
 function addCoins(amount) {
   userCoins += amount;
-  const coinDisplay = document.getElementById('user-coins');
+  const coinDisplay = document.getElementById('tbs-display');
   if(coinDisplay){ coinDisplay.textContent = userCoins + " TBS"; }
 }
 
-// إضافة مكافأة عند الضغط على أي بطاقة تواصل
+// مكافأة عند الضغط على أي بطاقة تواصل
 document.querySelectorAll('.social-card').forEach(card=>{
   card.addEventListener('click',()=>addCoins(20));
 });
