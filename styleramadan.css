@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+body{
+    margin:0;
+    padding:0;
+    font-family:'Cairo',sans-serif;
+    color:white;
+    overflow:hidden;
+    text-align:center;
+}
+
+/* فيديو الخلفية */
+#bg-video{
+    position:fixed;
+    right:0;
+    bottom:0;
+    min-width:100%;
+    min-height:100%;
+    object-fit:cover;
+    z-index:-1;
+    filter:brightness(0.75) contrast(1.1);
+}
+
+/* موسيقى الخلفية مخفية */
+audio{display:none;}
+
+/* شريط علوي */
+.top-nav{
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    background-color:rgba(0,0,0,0.85);
+    padding:12px 20px;
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:100;
+    gap:15px;
+    border-bottom:2px solid #ffd700;
+    box-shadow:0 0 20px #ffd700;
+}
+.top-nav a{
+    color:white;
+    text-decoration:none;
+    padding:6px 12px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    font-weight:bold;
+    box-shadow:0 0 10px #ffd700 inset;
+    transition:0.3s;
+}
+.top-nav a:hover{
+    box-shadow:0 0 15px #ffd700 inset,0 0 20px #ffd700;
+    transform:scale(1.05);
+}
+.top-nav span{
+    font-weight:bold;
+    margin-left:20px;
+    color:#ffd700;
+}
+
+/* شريط جانبي */
+.sidebar{
+    position:fixed;
+    top:60px;
+    left:0;
+    width:200px;
+    height:calc(100% - 60px);
+    background-color:rgba(0,0,0,0.85);
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    z-index:90;
+    border-radius:0 10px 10px 0;
+    box-shadow:0 0 20px #ffd700;
+    border-right:2px solid #ffd700;
+}
+.sidebar .date-box{
+    background:rgba(255,255,255,0.05);
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 0 10px #ffd700;
+}
+.sidebar .date-box p{
+    margin:5px 0;
+}
+
+/* بطاقات الأدعية */
+.cards-container{
+    position:fixed;
+    top:80px;
+    right:0;
+    width:250px;
+    height:calc(100% - 100px);
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    padding:10px;
+    z-index:90;
+    overflow-y:auto;
+}
+.card{
+    background:rgba(0,0,0,0.8);
+    padding:12px;
+    border-radius:12px;
+    border:3px solid;
+    box-shadow:0 0 12px;
+    color:white;
+    font-weight:bold;
+    text-align:center;
+    transition:0.3s;
+}
+.card:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px #fff;
+}
+
+/* ألوان الإطارات حسب النوع */
+.card.duaa{border-color:#FFD700; box-shadow:0 0 15px #FFD700;}
+.card.hadith{border-color:#1E90FF; box-shadow:0 0 15px #1E90FF;}
+.card.quran{border-color:#32CD32; box-shadow:0 0 15px #32CD32;}
+.card.today{border-color:#FF4500; box-shadow:0 0 20px #FF4500; font-size:16px;}
+
+/* وسط الصفحة - الساعة */
+.main-center{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:#ffd700;
+    text-align:center;
+}
+.main-center h1{
+    font-size:48px;
+    text-shadow:0 0 15px #ffd700;
+    margin-bottom:10px;
+}
+.main-center h2{
+    font-size:24px;
+    font-weight:700;
+}
+
+/* مواقيت الصلاة */
+.prayer-times{
+    position:fixed;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:15px;
+    background:rgba(0,0,0,0.7);
+    padding:10px 20px;
+    border-radius:15px;
+    box-shadow:0 0 15px #ffd700;
+}
+.prayer-times div{
+    text-align:center;
+    font-weight:bold;
+}
