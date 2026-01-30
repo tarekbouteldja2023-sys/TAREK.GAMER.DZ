@@ -21,7 +21,7 @@ function updateTBSDisplay() {
   }
 }
 
-// مثال: زيادة TBS عند الضغط على بطاقات التواصل
+// زيادة TBS عند الضغط على بطاقات التواصل
 document.querySelectorAll('.social-card a').forEach(cardBtn => {
   cardBtn.addEventListener('click', () => {
     addTBS(20);
@@ -30,12 +30,10 @@ document.querySelectorAll('.social-card a').forEach(cardBtn => {
 
 // موسيقى الخلفية
 const music = document.getElementById('music');
-if(music){
-  music.volume = 0.25;
-}
+if(music){ music.volume = 0.25; }
 
 // تأثير Hover للشريط العلوي
 document.querySelectorAll('.top-nav a').forEach(iconBtn => {
-  iconBtn.addEventListener('mouseenter', () => { iconBtn.style.transform = 'scale(1.1)'; });
-  iconBtn.addEventListener('mouseleave', () => { iconBtn.style.transform = 'scale(1)'; });
+  iconBtn.addEventListener('mouseenter', () => { iconBtn.style.transform='scale(1.1)'; });
+  iconBtn.addEventListener('mouseleave', () => { iconBtn.style.transform='scale(1)'; });
 });
