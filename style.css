@@ -1,13 +1,23 @@
 /* ==== تصفير شامل ==== */
 * { margin:0; padding:0; box-sizing:border-box; }
-html, body { width:100%; height:100%; font-family:'Segoe UI', Arial, sans-serif; overflow-x:hidden; color:white; }
+html, body { width:100%; height:100%; font-family:'Cairo', 'Roboto', Arial, sans-serif; overflow-x:hidden; color:white; }
 
 /* خلفية الفيديو */
 #bg-video { position:fixed; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-1; }
 
 /* الشريط العلوي */
-.top-nav { position:fixed; top:0; left:0; width:100%; height:55px; background:rgba(0,0,0,0.6); display:flex; justify-content:center; align-items:center; gap:22px; z-index:1000; }
-.top-nav a { color:#fff; text-decoration:none; padding:6px 14px; display:flex; align-items:center; gap:6px; border-radius:10px; transition:0.3s ease; }
+.top-nav {
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:55px;
+  background:rgba(0,0,0,0.7);
+  display:flex; justify-content:center; align-items:center; gap:22px;
+  z-index:1000;
+}
+.top-nav a {
+  color:#fff; text-decoration:none; padding:6px 14px; display:flex;
+  align-items:center; gap:6px; border-radius:10px; transition:0.3s ease;
+}
 .top-nav a:hover { background:rgba(255,255,255,0.15); transform:scale(1.05); }
 .currency-counter { margin-left:20px; font-weight:bold; }
 
@@ -17,31 +27,32 @@ html, body { width:100%; height:100%; font-family:'Segoe UI', Arial, sans-serif;
 @keyframes scrollText { from { transform:translateX(0); } to { transform:translateX(-100%); } }
 
 /* الشريط الجانبي */
-.sidebar { position:fixed; top:87px; left:0; width:220px; height:calc(100% - 87px); background:rgba(0,0,0,0.6); padding:15px; display:flex; flex-direction:column; gap:14px; z-index:900; }
+.sidebar {
+  position:fixed; top:87px; left:0; width:220px; height:calc(100% - 87px);
+  background:rgba(0,0,0,0.6); padding:15px; display:flex; flex-direction:column; gap:14px; z-index:900;
+}
 .sidebar a { display:flex; align-items:center; gap:10px; padding:8px 10px; border-radius:8px; cursor:pointer; transition:0.25s; }
 .sidebar a:hover { background:rgba(255,255,255,0.15); }
 .sidebar-bottom { margin-top:auto; }
 
 /* العنوان الرئيسي */
 .main-header { text-align:center; margin-top:120px; }
-.main-header h1 { font-size:42px; color:#00fff0; text-shadow: 0 0 5px #00fff0, 0 0 10px #00fff0, 0 0 20px #00fff0, 0 0 40px #00fff0; animation: neonGlow 1.5s ease-in-out infinite alternate; }
-.main-header h1 span { color:#ff00ff; }
-.main-header h2 { font-size:24px; color:#ffd700; margin-top:10px; text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700; }
+.main-header h1 { font-family:'Cairo', sans-serif; font-size:36px; color:#00ffff; margin:5px 0; text-shadow:0 0 8px #00ffff,0 0 15px #00ffff,0 0 20px #00ffff; }
+.main-header .site-name { font-family:'Roboto', sans-serif; color:#ffdd00; font-size:44px; text-shadow:0 0 8px #ffdd00,0 0 15px #ffdd00,0 0 25px #ffdd00; }
+.main-header h2 { font-family:'Cairo', sans-serif; font-size:22px; color:#ffd700; margin-top:8px; text-shadow:0 0 6px #ffd700,0 0 12px #ffd700; }
 
-/* تأثير النيون */
-@keyframes neonGlow {
-  from { text-shadow: 0 0 5px #00fff0, 0 0 10px #00fff0, 0 0 20px #00fff0, 0 0 40px #00fff0; }
-  to { text-shadow: 0 0 10px #00fff0, 0 0 20px #00fff0, 0 0 30px #00fff0, 0 0 50px #00fff0; }
-}
-
-/* المحتوى الرئيسي – بطاقات التواصل */
+/* بطاقات التواصل */
 .content { margin-left:240px; margin-top:180px; padding:30px; display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:28px; }
-.social-card { background:rgba(0,0,0,0.8); border-radius:18px; padding:25px; text-align:center; box-shadow:0 0 25px rgba(0,0,0,0.6); transition:0.35s ease; }
-.social-card:hover { transform:translateY(-10px) scale(1.05); }
-.social-card i { font-size:46px; margin-bottom:10px; }
-.social-card h3 { margin-bottom:10px; }
-.social-card a { display:inline-block; padding:10px 24px; border-radius:30px; background:white; color:black; font-weight:bold; text-decoration:none; }
-.instagram i { color:#E1306C; } .youtube i { color:#FF0000; } .facebook i { color:#1877F2; } .telegram i { color:#229ED9; } .discord i { color:#5865F2; } .tiktok i { color:#00f2ea; }
+.social-card { border-radius:20px; padding:30px; text-align:center; color:white; font-weight:bold; transition:0.35s ease, box-shadow 0.3s; background:linear-gradient(135deg,#222,#111); box-shadow:0 4px 20px rgba(0,0,0,0.6); }
+.social-card:hover { transform:translateY(-10px); box-shadow:0 10px 30px rgba(0,0,0,0.8); }
+.social-card i { font-size:50px; margin-bottom:12px; transition:0.3s; }
+.social-card h3 { margin-bottom:12px; }
+.social-card a { display:inline-block; padding:10px 25px; border-radius:30px; background:linear-gradient(45deg,#00c6ff,#0072ff); color:white; font-weight:bold; text-decoration:none; transition:0.3s; }
+.social-card a:hover { background:linear-gradient(45deg,#ff6a00,#ee0979); transform:scale(1.05); }
+
+/* ألوان أيقونات كل منصة */
+.instagram i { color:#E1306C; } .youtube i { color:#FF0000; } .facebook i { color:#1877F2; }
+.telegram i { color:#229ED9; } .discord i { color:#5865F2; } .tiktok i { color:#69C9D0; }
 
 /* استجابة الشاشات الصغيرة */
-@media(max-width:768px) { .sidebar{display:none;} .content{margin-left:0; margin-top:180px;} }
+@media(max-width:768px) { .sidebar{display:none;} .content{margin-left:0;margin-top:180px;} }
