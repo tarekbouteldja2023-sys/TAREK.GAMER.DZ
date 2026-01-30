@@ -20,22 +20,26 @@
 <!-- الشريط العلوي -->
 <div class="top-nav">
     <a href="index.html">🏠 العودة إلى الرئيسية</a>
-    <span>رمضان 2026</span>
+    <a href="#"><i>🌙</i> رمضان 2026</a>
 </div>
 
-<!-- شريط جانبي -->
+<!-- الشريط الجانبي -->
 <div class="sidebar">
     <div class="date-box" id="gregorian"></div>
     <div class="date-box" id="hijri"></div>
     <div id="countdown"></div>
 </div>
 
-<!-- بطاقات الأدعية -->
+<!-- البطاقات اليومية للأدعية -->
 <div class="cards-container" id="cards"></div>
 
-<!-- الساعة في وسط الصفحة -->
+<!-- الساعة الرقمية الكلاسيكية -->
 <div class="main-center">
-    <h1 id="time">00:00:00</h1>
+    <div class="mosque-clock">
+        <div id="digitalClock">00:00:00</div>
+        <div id="dayStatus">اليوم -- من رمضان</div>
+        <div id="countdownDisplay"></div>
+    </div>
     <h2>رمضان مبارك!</h2>
 </div>
 
@@ -48,7 +52,7 @@
     <div>العشاء: <span id="isha">--:--</span></div>
 </div>
 
-<!-- سطر حقوق -->
+<!-- الحقوق -->
 <footer>
 الموقع مصمم من طرف : TAREK BOUTELDJA | يوم الإنشاء : 30/01/2026
 </footer>
