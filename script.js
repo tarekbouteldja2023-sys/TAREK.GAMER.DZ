@@ -1,11 +1,11 @@
 // صوت النقر
 document.addEventListener("click", () => {
-  const sound = document.getElementById("clickSound");
-  sound.currentTime = 0;
-  sound.play();
+  const click = document.getElementById("clickSound");
+  click.currentTime = 0;
+  click.play();
 });
 
-// تشغيل الموسيقى بعد أول تفاعل (للمتصفحات)
+// تشغيل الموسيقى بعد أول تفاعل
 document.addEventListener("click", () => {
   document.getElementById("bgMusic").play();
 }, { once: true });
