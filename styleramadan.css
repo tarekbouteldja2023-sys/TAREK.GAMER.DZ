@@ -1,186 +1,177 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
 body {
-    font-family:'Cairo',sans-serif;
-    margin:0;
-    padding:0;
-    color:white;
-    overflow-x:hidden;
+  font-family:'Cairo', sans-serif;
+  margin:0; padding:0;
+  color:white;
+  overflow-x:hidden;
 }
 
-/* فيديو الخلفية */
-#bg-video{
-    position:fixed;
-    right:0;
-    bottom:0;
-    min-width:100%;
-    min-height:100%;
-    object-fit:cover;
-    z-index:-1;
-    filter:brightness(0.85) contrast(1.1);
+/* خلفية الفيديو */
+#bg-video {
+  position:fixed;
+  right:0; bottom:0;
+  min-width:100%; min-height:100%;
+  object-fit:cover;
+  z-index:-1;
+  filter:brightness(0.7) contrast(1.1);
 }
 
-/* موسيقى وصوت النقر */
-audio{display:none;}
+/* الصوتيات مخفية */
+audio { display:none; }
 
 /* الشريط العلوي */
-.top-nav{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background-color:rgba(0,0,0,0.85);
-    padding:12px 20px;
-    position:fixed;
-    top:0;
-    width:100%;
-    z-index:100;
-    gap:20px;
-    border-bottom:2px solid #FFD700;
-    box-shadow:0 0 20px #FFD700;
-    border-radius:0 0 10px 10px;
-    animation:glowTop 2s infinite alternate;
+.top-nav {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background-color:rgba(0,0,0,0.85);
+  padding:12px 20px;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:100;
+  gap:15px;
+  border-bottom:2px solid #0ff;
+  box-shadow:0 0 20px #0ff;
+  border-radius:0 0 10px 10px;
 }
-.top-nav a{
-    color:white;
-    text-decoration:none;
-    padding:6px 12px;
-    border-radius:10px;
-    display:flex;
-    align-items:center;
-    gap:5px;
-    font-weight:bold;
-    box-shadow:0 0 10px #FFD700 inset;
-    transition:0.3s;
+.top-nav a {
+  color:white;
+  text-decoration:none;
+  padding:6px 12px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  font-weight:bold;
+  box-shadow:0 0 10px #0ff inset;
+  transition:0.3s;
 }
-.top-nav a:hover{
-    box-shadow:0 0 15px #FFD700 inset,0 0 20px #FFD700;
-    transform:scale(1.05);
-}
-@keyframes glowTop{
-    0%{box-shadow:0 0 15px #FFD700;}
-    100%{box-shadow:0 0 25px #FFD700;}
+.top-nav a:hover {
+  box-shadow:0 0 15px #0ff inset,0 0 20px #0ff;
+  transform:scale(1.05);
 }
 
 /* الشريط الجانبي */
-.sidebar{
-    position:fixed;
-    top:60px;
-    left:0;
-    width:220px;
-    height:calc(100% - 60px);
-    background-color:rgba(0,0,0,0.85);
-    padding:20px;
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-    z-index:90;
-    border-radius:0 10px 10px 0;
-    box-shadow:0 0 20px #FFD700;
-    border-right:2px solid #FFD700;
-    animation:glowSide 2s infinite alternate;
+.sidebar {
+  position:fixed;
+  top:60px;
+  left:0;
+  width:220px;
+  height:calc(100% - 60px);
+  background-color:rgba(0,0,0,0.85);
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  z-index:90;
+  border-radius:0 10px 10px 0;
+  box-shadow:0 0 20px #0ff;
+  border-right:2px solid #0ff;
 }
-@keyframes glowSide{
-    0%{box-shadow:0 0 15px #FFD700;}
-    100%{box-shadow:0 0 25px #FFD700;}
-}
-.date-box{
-    background:rgba(255,255,255,0.1);
-    color:#FFD700;
-    padding:10px;
-    border-radius:8px;
-    text-align:center;
-    font-weight:bold;
+.date-display p {
+  font-weight:bold;
+  margin:10px 0;
 }
 
-/* بطاقات الأدعية اليومية */
-.cards-container{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:15px;
-    margin-top:200px;
+/* العداد */
+.countdown-wrapper {
+  text-align:center;
+  margin-top:120px;
+  z-index:80;
 }
-.social-card{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:space-between;
-    width:180px;
-    min-height:80px;
-    background:#000;
-    padding:10px;
-    border-radius:12px;
-    border:2px solid #FFD700;
-    box-shadow:0 0 12px #FFD700;
-    text-align:center;
-    transition:0.3s ease, transform 0.3s, box-shadow 0.3s;
-}
-.social-card:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 15px #FFD700;
-}
-.social-top{
-    font-size:14px;
-    margin-bottom:6px;
-    font-weight:bold;
-    color:#FFD700;
+#countdown {
+  font-size:36px;
+  font-weight:bold;
+  color:#FFD700;
+  text-shadow:0 0 10px #FFD700,0 0 20px #0ff;
 }
 
-/* الساعة الرقمية الكلاسيكية */
-.mosque-clock{
-    background: rgba(0,0,0,0.5);
-    border: 5px solid #FFD700;
-    border-radius: 20px;
-    padding: 20px 40px;
-    display: inline-block;
-    text-align:center;
-    box-shadow:0 0 20px #FFD700 inset;
-    font-family: 'Cairo', serif;
-    margin: 30px auto;
-    animation:glowClock 2s infinite alternate;
+/* الساعة المسجدية */
+.mosque-clock-wrapper {
+  position:relative;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin:20px 0;
+  z-index:80;
 }
-@keyframes glowClock{
-    0%{box-shadow:0 0 20px #FFD700 inset;}
-    100%{box-shadow:0 0 30px #FFD700 inset;}
+.mosque-clock-frame {
+  background: rgba(0,0,0,0.6);
+  padding:25px 40px;
+  border-radius:50%;
+  box-shadow: 0 0 20px #0ff, 0 0 40px rgba(0,255,255,0.4) inset;
+  border:3px solid #0ff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
-#digitalClock{
-    font-size:48px;
-    font-weight:bold;
-    color:#FFD700;
-    text-shadow:0 0 10px #FFD700;
-}
-#dayStatus{
-    font-size:20px;
-    color:#FF4500;
-    margin-top:10px;
-    text-shadow:0 0 5px #FF4500;
-}
-#countdownDisplay{
-    font-size:18px;
-    color:#00FF00;
-    margin-top:5px;
+#mosque-clock {
+  font-family:'Courier New', monospace;
+  font-size:60px;
+  font-weight:bold;
+  color:#FFD700;
+  text-shadow:0 0 10px #FFD700,0 0 20px #0ff;
 }
 
-/* مواقيت الصلاة */
-.prayer-times{
-    position:fixed;
-    bottom:50px;
-    right:20px;
-    background:rgba(0,0,0,0.5);
-    padding:15px;
-    border-radius:10px;
-    border:2px solid #FFD700;
-    color:#FFD700;
-    box-shadow:0 0 15px #FFD700;
+/* بطاقات رمضان اليومية */
+.daily-cards {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+  margin-top:20px;
+}
+.daily-card {
+  width:250px;
+  background:rgba(0,0,0,0.6);
+  padding:15px;
+  border-radius:12px;
+  border:2px solid #0ff;
+  box-shadow:0 0 12px #0ff;
+  text-align:center;
+  color:#fff;
+}
+.daily-card h4 {
+  margin:5px 0;
+  font-size:16px;
+  font-weight:bold;
+  text-shadow:0 0 5px #0ff;
 }
 
-/* الحقوق */
-footer{
-    text-align:center;
-    color:#aaa;
-    padding:10px;
-    font-size:14px;
-    position:fixed;
-    bottom:0;
-    width:100%;
+/* مواعيد الصلاة */
+.prayer-times {
+  margin:30px auto;
+  width:90%;
+  max-width:500px;
+  background:rgba(0,0,0,0.6);
+  padding:15px;
+  border-radius:12px;
+  border:2px solid #0ff;
+  box-shadow:0 0 15px #0ff;
+  text-align:center;
+}
+.prayer-times h3 {
+  font-weight:bold;
+  margin-bottom:10px;
+}
+.prayer-times ul {
+  list-style:none;
+  padding:0;
+}
+.prayer-times li {
+  padding:6px 0;
+  border-bottom:1px solid rgba(255,255,255,0.2);
+}
+
+/* Footer */
+footer {
+  text-align:center;
+  color:#aaa;
+  padding:10px;
+  font-size:14px;
+  position:fixed;
+  bottom:0;
+  width:100%;
 }
