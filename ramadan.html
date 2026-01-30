@@ -2,56 +2,57 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>رمضان كريم - TAREK GAMER DZ</title>
+<title>رمضان - TAREK GAMER DZ</title>
 <link rel="stylesheet" href="styleramadan.css">
 </head>
 <body>
 
 <!-- فيديو الخلفية -->
-<video autoplay muted loop id="bg-video">
+<video id="bg-video" autoplay muted loop>
     <source src="video1.mp4" type="video/mp4">
 </video>
 
 <!-- موسيقى الخلفية -->
-<audio autoplay loop>
-    <source src="music1.mp3" type="audio/mp3">
+<audio id="bg-music" autoplay loop>
+    <source src="music1.mp3" type="audio/mpeg">
 </audio>
 
-<!-- شريط علوي -->
+<!-- الشريط العلوي -->
 <div class="top-nav">
-    <a href="index.html">⬅ العودة للصفحة الرئيسية</a>
-    <span>🌙 رمضان كريم</span>
+    <a href="index.html">🏠 العودة إلى الرئيسية</a>
+    <span>رمضان 2026</span>
 </div>
 
-<!-- شريط جانبي أيسر -->
+<!-- شريط جانبي -->
 <div class="sidebar">
-    <div class="date-box">
-        <p id="gregorian">التاريخ الميلادي: </p>
-        <p id="hijri">التاريخ الهجري: </p>
-    </div>
+    <div class="date-box" id="gregorian"></div>
+    <div class="date-box" id="hijri"></div>
+    <div id="countdown"></div>
 </div>
 
 <!-- بطاقات الأدعية -->
-<div class="cards-container" id="cards">
-    <!-- سيتم تعبئتها بواسطة JS -->
-</div>
+<div class="cards-container" id="cards"></div>
 
-<!-- وسط الصفحة - الساعة -->
+<!-- الساعة في وسط الصفحة -->
 <div class="main-center">
     <h1 id="time">00:00:00</h1>
-    <h2>الوقت الحالي</h2>
+    <h2>رمضان مبارك!</h2>
 </div>
 
 <!-- مواقيت الصلاة -->
 <div class="prayer-times">
-    <div>الفجر<br><span id="fajr">05:00</span></div>
-    <div>الظهر<br><span id="dhuhr">12:30</span></div>
-    <div>العصر<br><span id="asr">15:45</span></div>
-    <div>المغرب<br><span id="maghrib">18:15</span></div>
-    <div>العشاء<br><span id="isha">19:45</span></div>
+    <div>الفجر: <span id="fajr">--:--</span></div>
+    <div>الظهر: <span id="dhuhr">--:--</span></div>
+    <div>العصر: <span id="asr">--:--</span></div>
+    <div>المغرب: <span id="maghrib">--:--</span></div>
+    <div>العشاء: <span id="isha">--:--</span></div>
 </div>
 
-<!-- ربط JS -->
+<!-- سطر حقوق -->
+<footer>
+الموقع مصمم من طرف : TAREK BOUTELDJA | يوم الإنشاء : 30/01/2026
+</footer>
+
 <script src="scriptramadan.js"></script>
 </body>
 </html>
