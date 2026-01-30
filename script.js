@@ -8,7 +8,7 @@ document.addEventListener("click", () => {
   click.play();
 });
 
-// مثال زيادة العملة TBS عند الضغط على زر (يمكن ربطه لاحقاً بالمهام)
+// العملة TBS
 let coins = 0;
 const coinsDisplay = document.getElementById("coins");
 function addCoin(amount) {
