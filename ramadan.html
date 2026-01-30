@@ -3,70 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>رمضان - TAREK GAMER DZ</title>
+<title>رمضان 2026 - TAREK GAMER DZ</title>
 <link rel="stylesheet" href="styleramadan.css">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<!-- فيديو الخلفية -->
-<video id="bg-video" autoplay loop muted>
+<!-- فيديو خلفية -->
+<video id="bg-video" autoplay muted loop>
   <source src="video1.mp4" type="video/mp4">
 </video>
 
-<!-- الصوتيات -->
+<!-- موسيقى خلفية -->
 <audio id="bg-music" autoplay loop>
   <source src="music1.mp3" type="audio/mp3">
 </audio>
-<audio id="click-sound">
-  <source src="click.mp3" type="audio/mp3">
-</audio>
 
-<!-- الشريط العلوي -->
+<!-- شريط علوي -->
 <div class="top-nav">
-  <a href="index.html" onclick="playClick()"><i class="fas fa-home"></i> العودة للصفحة الرئيسية</a>
+  <a href="index.html"><i class="fas fa-home"></i> العودة للرئيسية</a>
 </div>
 
-<!-- الشريط الجانبي -->
+<!-- شريط جانبي -->
 <div class="sidebar">
   <div class="date-display">
-    <p>التاريخ الميلادي: <span id="gregorian-date"></span></p>
-    <p>التاريخ الهجري: <span id="hijri-date"></span></p>
+    <p>التاريخ الميلادي: <span id="gregorian-date">--</span></p>
+    <p>التاريخ الهجري: <span id="hijri-date">--</span></p>
+  </div>
+  <div id="prayer-times" class="prayer-times">
+    <h3><i class="fas fa-mosque"></i> مواعيد الصلاة</h3>
+    <ul>
+      <li>الفجر: <span id="fajr">--</span></li>
+      <li>الشروق: <span id="shurooq">--</span></li>
+      <li>الظهر: <span id="dhuhr">--</span></li>
+      <li>العصر: <span id="asr">--</span></li>
+      <li>المغرب: <span id="maghrib">--</span></li>
+      <li>العشاء: <span id="isha">--</span></li>
+    </ul>
   </div>
 </div>
 
-<!-- العداد لرمضان -->
-<div class="countdown-wrapper">
-  <h2>كم تبقى حتى رمضان؟</h2>
-  <div id="countdown"></div>
+<!-- الساعة الرقمية -->
+<div class="mosque-clock">
+  <div id="digital-clock"></div>
 </div>
 
-<!-- الساعة المسجدية الرقمية -->
-<div class="mosque-clock-wrapper">
-  <div class="mosque-clock-frame">
-    <div id="mosque-clock"></div>
-  </div>
+<!-- العد التنازلي لرمضان -->
+<div class="countdown">
+  <h2>📅 كم تبقى على رمضان</h2>
+  <div id="ramadan-countdown">-- يوم -- ساعة -- دقيقة -- ثانية</div>
 </div>
 
-<!-- بطاقات رمضان اليومية -->
-<div class="daily-cards" id="daily-cards">
-  <!-- سيتم توليد 30 بطاقة تلقائياً بواسطة JS -->
+<!-- بطاقات اليمنى للادعية / الآيات / الأحاديث -->
+<div class="right-cards" id="right-cards">
+  <!-- ستملأ تلقائياً عند بداية رمضان -->
 </div>
 
-<!-- مواعيد الصلاة -->
-<div class="prayer-times">
-  <h3>مواعيد الصلاة</h3>
-  <ul id="prayer-list">
-    <!-- سيتم توليدها ديناميكياً -->
-  </ul>
-</div>
-
-<!-- تذييل -->
+<!-- شريط أسفل الصفحة للزينة -->
 <footer>
-  الموقع مصمم من طرف : TAREK BOUTELDJA | يوم الانشاء : 30/01/2026
+  موقع مصمم من طرف: TAREK BOUTELDJA | تاريخ الإنشاء: 30/01/2026
 </footer>
 
 <script src="scriptramadan.js"></script>
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
