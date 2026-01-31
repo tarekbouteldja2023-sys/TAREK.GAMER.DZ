@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>صفحة البروفايل - TAREK GAMER DZ</title>
+<link rel="stylesheet" href="profile.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- خلفية الصفحة -->
+<img src="profile.png" id="bg-profile" alt="Profile Background">
+
+<!-- موسيقى الخلفية -->
+<audio autoplay loop id="profile-music">
+  <source src="Musicprofil.mp3" type="audio/mpeg">
+</audio>
+
+<!-- شريط جانبي -->
+<div class="sidebar-profile">
+  <a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a>
+  <a href="#" id="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج</a>
+</div>
+
+<!-- نافذة تسجيل الدخول -->
+<div class="login-container" id="login-container">
+  <h2>تسجيل الدخول</h2>
+  <input type="text" id="username" placeholder="اسم المستخدم">
+  <input type="password" id="password" placeholder="كلمة المرور">
+  <button id="login-btn">دخول</button>
+</div>
+
+<!-- محتوى البروفايل بعد الدخول -->
+<div class="profile-content" id="profile-content" style="display:none;">
+  <div class="profile-header">
+    <img src="" id="profile-pic" alt="صورة المستخدم">
+    <h2 id="display-username"></h2>
+  </div>
+
+  <div class="profile-info">
+    <p><i class="fa-solid fa-coins"></i> رصيد العملة: <span id="user-tbs">0</span> TBS</p>
+    <p><i class="fa-solid fa-clock"></i> الوقت داخل الموقع: <span id="user-time">0 دقائق</span></p>
+  </div>
+
+  <!-- أيقونة الإدارة -->
+  <div class="admin-icon" id="admin-icon" title="صفحة الإدارة">
+    <i class="fa-solid fa-shield-halved"></i>
+  </div>
+</div>
+
+<!-- النافذة المنبثقة للإدارة -->
+<div class="admin-popup" id="admin-popup" style="display:none;">
+  <h3>صفحة الإدارة</h3>
+  <input type="password" id="admin-password" placeholder="أدخل كلمة المرور">
+  <button id="admin-login-btn">دخول</button>
+  <button id="admin-close-btn">إغلاق</button>
+  <div id="admin-info" style="display:none;">
+    <p>معلومات المستخدم الكاملة:</p>
+    <ul id="full-user-info"></ul>
+  </div>
+</div>
+
+<script src="profile.js"></script>
+</body>
+</html>
