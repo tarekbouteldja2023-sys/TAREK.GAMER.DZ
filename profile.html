@@ -8,55 +8,54 @@
 </head>
 <body>
 
-<!-- خلفية الصفحة -->
-<img src="profile.png" id="bg-profile" alt="Profile Background">
+<img src="profile.png" id="bg-img" alt="خلفية">
 
-<!-- موسيقى الخلفية -->
-<audio autoplay loop id="profile-music">
+<audio autoplay loop id="music">
   <source src="Musicprofil.mp3" type="audio/mpeg">
 </audio>
 
-<!-- شريط جانبي -->
-<div class="sidebar-profile">
-  <a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a>
-  <a href="#" id="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج</a>
-</div>
-
-<!-- نافذة تسجيل الدخول -->
 <div class="login-container" id="login-container">
-  <h2>تسجيل الدخول</h2>
-  <input type="text" id="username" placeholder="اسم المستخدم">
-  <input type="password" id="password" placeholder="كلمة المرور">
+  <div id="clock" class="clock"></div>
+  <div id="welcome-msg" class="welcome-msg">مرحبا بك في الموقع!</div>
+  
+  <input type="text" id="username-field" placeholder="اسم المستخدم">
+  <input type="password" id="password-field" placeholder="كلمة المرور">
+  <input type="file" id="profile-img-input" accept="image/*">
   <button id="login-btn">دخول</button>
 </div>
 
-<!-- محتوى البروفايل بعد الدخول -->
-<div class="profile-content" id="profile-content" style="display:none;">
+<div class="profile-container" id="profile-container" style="display:none;">
   <div class="profile-header">
-    <img src="" id="profile-pic" alt="صورة المستخدم">
-    <h2 id="display-username"></h2>
+    <img src="" id="profile-img" alt="الصورة">
+    <h2 id="profile-name"></h2>
   </div>
-
   <div class="profile-info">
-    <p><i class="fa-solid fa-coins"></i> رصيد العملة: <span id="user-tbs">0</span> TBS</p>
-    <p><i class="fa-solid fa-clock"></i> الوقت داخل الموقع: <span id="user-time">0 دقائق</span></p>
+    <p><i class="fa-solid fa-coins"></i> الرصيد: <span id="tbs-display">0 TBS</span></p>
+    <p><i class="fa-solid fa-clock"></i> الوقت داخل الموقع: <span id="time-spent">0 دقيقة</span></p>
   </div>
 
-  <!-- أيقونة الإدارة -->
-  <div class="admin-icon" id="admin-icon" title="صفحة الإدارة">
-    <i class="fa-solid fa-shield-halved"></i>
+  <h3>المهام المتاحة:</h3>
+  <div class="tasks">
+    <button class="task-btn" data-tbs="50">شاهد فيديو قصير +50 TBS</button>
+    <button class="task-btn" data-tbs="100">شارك رابط الموقع +100 TBS</button>
+    <button class="task-btn" data-tbs="200">أكمل مهمة خاصة +200 TBS</button>
+  </div>
+
+  <button id="logout-btn">خروج</button>
+
+  <div class="admin-icon" id="admin-icon" title="المدير">
+    <i class="fa-solid fa-user-shield"></i>
   </div>
 </div>
 
-<!-- النافذة المنبثقة للإدارة -->
 <div class="admin-popup" id="admin-popup" style="display:none;">
-  <h3>صفحة الإدارة</h3>
-  <input type="password" id="admin-password" placeholder="أدخل كلمة المرور">
-  <button id="admin-login-btn">دخول</button>
+  <h3>صفحة المدير العام</h3>
+  <input type="password" id="admin-password" placeholder="كلمة السر">
+  <button id="admin-login-btn">دخول المدير</button>
   <button id="admin-close-btn">إغلاق</button>
-  <div id="admin-info" style="display:none;">
-    <p>معلومات المستخدم الكاملة:</p>
-    <ul id="full-user-info"></ul>
+  <div id="admin-content" style="display:none;">
+    <p>مرحبا بالمدير</p>
+    <p>بيانات المستخدمين تظهر هنا</p>
   </div>
 </div>
 
