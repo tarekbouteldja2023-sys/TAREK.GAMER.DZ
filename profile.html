@@ -2,52 +2,45 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>صفحة البروفايل - TAREK GAMER DZ</title>
+<title>صفحة البروفايل</title>
 <link rel="stylesheet" href="profile.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
 <!-- خلفية الصفحة -->
-<img src="profile.png" alt="Profile Background" class="bg-img">
+<img src="profile.png" id="bg-img">
 
 <!-- موسيقى الخلفية -->
-<audio autoplay loop id="music-profile">
+<audio autoplay loop id="music">
   <source src="Musicprofil.mp3" type="audio/mpeg">
 </audio>
 
-<!-- نافذة تسجيل الدخول -->
-<div class="login-container" id="login-container">
+<!-- نافذة الترحيب -->
+<div class="welcome-bar">
+  <div class="welcome-text" id="welcome-text">
+    مرحبا بك في صفحة البروفايل
+  </div>
+</div>
+
+<!-- نموذج تسجيل الدخول -->
+<div class="login-card" id="login-card">
   <h2>تسجيل الدخول</h2>
   <input type="text" id="username" placeholder="اسم المستخدم">
-  <input type="password" id="password" placeholder="كلمة المرور">
+  <input type="password" id="password" placeholder="كلمة السر">
   <input type="file" id="profile-pic" accept="image/*">
   <button id="login-btn">دخول</button>
-  <div id="login-msg"></div>
 </div>
 
-<!-- صفحة المستخدم بعد تسجيل الدخول -->
-<div class="user-dashboard" id="user-dashboard">
-  <div class="profile-header">
-    <img id="user-image" src="" alt="User Image">
-    <h2 id="user-name"></h2>
-  </div>
-  <div class="user-info">
-    <p><i class="fa-solid fa-coins"></i> رصيد TBS: <span id="user-tbs">0</span></p>
-    <p><i class="fa-solid fa-clock"></i> الوقت الذي قضاه: <span id="user-time">0</span> دقيقة</p>
-  </div>
+<!-- معلومات المستخدم بعد تسجيل الدخول -->
+<div class="user-info" id="user-info">
+  <img id="user-image" src="">
+  <h3 id="user-name"></h3>
+  <p>رصيد TBS: <span id="user-tbs">0</span></p>
+  <p>وقت التفاعل: <span id="user-time">0</span> دقيقة</p>
   <button id="logout-btn">خروج</button>
-  <!-- أيقونة المدير في أسفل اليمين -->
+  <!-- أيقونة المدير -->
   <div id="admin-icon"><i class="fa-solid fa-user-shield"></i></div>
-</div>
-
-<!-- نافذة المدير -->
-<div class="admin-popup" id="admin-popup">
-  <h3>لوحة المدير</h3>
-  <input type="password" id="admin-password" placeholder="كلمة مرور المدير">
-  <button id="admin-login-btn">دخول المدير</button>
-  <div id="admin-msg"></div>
-  <div id="admin-dashboard"></div>
 </div>
 
 <script src="profile.js"></script>
