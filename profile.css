@@ -1,161 +1,41 @@
-body, html{
-  margin:0;
-  padding:0;
-  font-family:'Cairo', sans-serif;
-  color:white;
-  overflow-x:hidden;
-  position:relative;
-}
+/* الخطوط */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
-#bg-img{
-  position:fixed;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:-1;
-  filter:brightness(0.6);
-}
+body{font-family:'Cairo',sans-serif;margin:0;padding:0;color:white;overflow-x:hidden;}
+.bg-img{position:fixed;width:100%;height:100%;object-fit:cover;z-index:-1;filter:brightness(0.7);}
+audio{display:none;}
 
-.clock{
-  font-size:24px;
-  margin-bottom:10px;
-  text-shadow: 0 0 10px #0ff;
-}
-
-.welcome-msg{
-  font-size:18px;
-  margin-bottom:20px;
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow{
-  0% { text-shadow: 0 0 5px #0ff; }
-  100% { text-shadow: 0 0 20px #0ff; }
-}
-
+/* تسجيل الدخول */
 .login-container{
-  width:350px;
-  margin:50px auto;
-  padding:20px;
-  background:rgba(0,0,0,0.75);
-  border-radius:15px;
-  box-shadow:0 0 15px #0ff;
-  text-align:center;
-  position:relative;
-  border:2px solid #0ff;
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  background:rgba(0,0,0,0.85);padding:30px;border-radius:15px;
+  box-shadow:0 0 20px #0ff;width:320px;text-align:center;
 }
-
-.login-container input, .login-container button{
-  width:80%;
-  margin:10px 0;
-  padding:10px;
-  border-radius:5px;
-  border:none;
-  outline:none;
-}
-
+.login-container input{width:90%;padding:10px;margin:10px 0;border-radius:8px;border:none;font-size:16px;}
 .login-container button{
-  background:#0ff;
-  color:#000;
-  font-weight:bold;
-  cursor:pointer;
-  transition:0.3s;
+  padding:10px 20px;margin-top:10px;border:none;border-radius:8px;background:#0ff;color:#000;font-weight:bold;
+  cursor:pointer;transition:0.3s;
 }
+.login-container button:hover{background:#0aa;color:white;}
 
-.login-container button:hover{
-  box-shadow:0 0 15px #0ff;
-  transform:scale(1.05);
-}
+/* لوحة المستخدم */
+.user-dashboard{display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+width:400px;background:rgba(0,0,0,0.85);padding:20px;border-radius:15px;box-shadow:0 0 25px #0ff;}
+.profile-header{text-align:center;margin-bottom:15px;}
+.profile-header img{width:120px;height:120px;border-radius:50%;border:3px solid #0ff;box-shadow:0 0 15px #0ff;}
+.profile-header h2{margin:10px 0;font-size:22px;color:#ffd700;}
+.user-info p{font-size:18px;margin:10px 0;display:flex;align-items:center;gap:10px;}
+.user-dashboard button{padding:8px 15px;border-radius:8px;border:none;background:#0ff;color:#000;font-weight:bold;cursor:pointer;}
+.user-dashboard button:hover{background:#0aa;color:white;}
 
-.profile-container{
-  width:400px;
-  margin:50px auto;
-  padding:20px;
-  background:rgba(0,0,0,0.75);
-  border-radius:10px;
-  box-shadow:0 0 20px #0ff;
-  text-align:center;
-  position:relative;
-}
+/* أيقونة المدير */
+#admin-icon{position:absolute;bottom:10px;right:10px;font-size:24px;color:#ff0;cursor:pointer;transition:0.3s;}
+#admin-icon:hover{color:#ffd700;transform:scale(1.2);}
 
-.profile-header img{
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  border:3px solid #0ff;
-  margin-bottom:10px;
-}
-
-.profile-header h2{
-  margin:0;
-  text-shadow:0 0 5px #0ff;
-}
-
-.tasks{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  margin:10px 0;
-}
-
-.task-btn{
-  padding:10px;
-  border:none;
-  border-radius:5px;
-  background:#0ff;
-  color:#000;
-  font-weight:bold;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.task-btn:hover{
-  box-shadow:0 0 15px #0ff;
-  transform:scale(1.05);
-}
-
-.admin-icon{
-  position:absolute;
-  bottom:10px;
-  right:10px;
-  font-size:24px;
-  cursor:pointer;
-  color:#ff0;
-  text-shadow:0 0 5px #ff0;
-}
-
-.admin-popup{
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  background:rgba(0,0,0,0.9);
-  padding:20px;
-  border-radius:10px;
-  box-shadow:0 0 20px #ff0;
-  width:300px;
-  text-align:center;
-  z-index:200;
-}
-
-.admin-popup input, .admin-popup button{
-  width:80%;
-  margin:10px 0;
-  padding:10px;
-  border-radius:5px;
-  border:none;
-  outline:none;
-}
-
-.admin-popup button{
-  background:#ff0;
-  color:#000;
-  font-weight:bold;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.admin-popup button:hover{
-  box-shadow:0 0 15px #ff0;
-  transform:scale(1.05);
-}
+/* نافذة المدير */
+.admin-popup{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+width:400px;background:rgba(0,0,0,0.9);padding:20px;border-radius:15px;box-shadow:0 0 25px #0ff;text-align:center;}
+.admin-popup input{width:80%;padding:10px;margin:10px 0;border-radius:8px;border:none;font-size:16px;}
+.admin-popup button{padding:10px 20px;border:none;border-radius:8px;background:#0ff;color:#000;font-weight:bold;cursor:pointer;}
+.admin-popup button:hover{background:#0aa;color:white;}
+#admin-dashboard{margin-top:15px;max-height:250px;overflow-y:auto;}
