@@ -2,62 +2,48 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>صفحة البروفايل - TAREK GAMER DZ</title>
+<title>ملفي الشخصي - TAREK GAMER DZ</title>
 <link rel="stylesheet" href="profile.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-<img src="profile.png" id="bg-img" alt="خلفية">
+<!-- خلفية -->
+<img src="profile.png" class="bg-profile" alt="خلفية">
 
-<audio autoplay loop id="music">
+<!-- موسيقى الخلفية -->
+<audio autoplay loop id="music-profile">
   <source src="Musicprofil.mp3" type="audio/mpeg">
 </audio>
 
+<!-- الترحيب والساعة -->
+<div class="top-bar">
+  <div class="welcome">مرحبا بك في صفحتك الشخصية</div>
+  <div class="clock" id="clock">00:00:00</div>
+</div>
+
+<!-- تسجيل الدخول -->
 <div class="login-container" id="login-container">
-  <div id="clock" class="clock"></div>
-  <div id="welcome-msg" class="welcome-msg">مرحبا بك في الموقع!</div>
-  
-  <input type="text" id="username-field" placeholder="اسم المستخدم">
-  <input type="password" id="password-field" placeholder="كلمة المرور">
-  <input type="file" id="profile-img-input" accept="image/*">
+  <h2>تسجيل الدخول</h2>
+  <input type="text" id="username" placeholder="اسم المستخدم">
+  <input type="password" id="password" placeholder="كلمة السر">
+  <input type="file" id="profile-pic" accept="image/*">
   <button id="login-btn">دخول</button>
 </div>
 
-<div class="profile-container" id="profile-container" style="display:none;">
+<!-- معلومات الحساب -->
+<div class="profile-info" id="profile-info">
   <div class="profile-header">
-    <img src="" id="profile-img" alt="الصورة">
-    <h2 id="profile-name"></h2>
+    <img id="user-img" src="" alt="صورة المستخدم">
+    <h2 id="user-name"></h2>
   </div>
-  <div class="profile-info">
-    <p><i class="fa-solid fa-coins"></i> الرصيد: <span id="tbs-display">0 TBS</span></p>
-    <p><i class="fa-solid fa-clock"></i> الوقت داخل الموقع: <span id="time-spent">0 دقيقة</span></p>
-  </div>
-
-  <h3>المهام المتاحة:</h3>
-  <div class="tasks">
-    <button class="task-btn" data-tbs="50">شاهد فيديو قصير +50 TBS</button>
-    <button class="task-btn" data-tbs="100">شارك رابط الموقع +100 TBS</button>
-    <button class="task-btn" data-tbs="200">أكمل مهمة خاصة +200 TBS</button>
-  </div>
-
+  <p>رصيدك: <span id="user-tbs">0</span> TBS</p>
+  <p>وقت التفاعل: <span id="user-time">0</span> دقائق</p>
   <button id="logout-btn">خروج</button>
-
-  <div class="admin-icon" id="admin-icon" title="المدير">
-    <i class="fa-solid fa-user-shield"></i>
-  </div>
 </div>
 
-<div class="admin-popup" id="admin-popup" style="display:none;">
-  <h3>صفحة المدير العام</h3>
-  <input type="password" id="admin-password" placeholder="كلمة السر">
-  <button id="admin-login-btn">دخول المدير</button>
-  <button id="admin-close-btn">إغلاق</button>
-  <div id="admin-content" style="display:none;">
-    <p>مرحبا بالمدير</p>
-    <p>بيانات المستخدمين تظهر هنا</p>
-  </div>
-</div>
+<!-- أيقونة دخول المدير -->
+<div class="admin-entry" id="admin-entry" title="المدير"></div>
 
 <script src="profile.js"></script>
 </body>
