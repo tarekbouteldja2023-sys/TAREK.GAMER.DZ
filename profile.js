@@ -1,64 +1,127 @@
-// موسيقى الخلفية
-const profileMusic=document.getElementById('profile-music');if(profileMusic){profileMusic.volume=0.25;}
+// الموسيقى
+const music=document.getElementById('music');
+if(music){music.volume=0.25;}
 
 // صوت النقر
-document.querySelectorAll('a, button').forEach(btn=>{btn.addEventListener('click',()=>{const clickSound=new Audio('click.mp3');clickSound.play();});});
+document.querySelectorAll('button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{ new Audio('click.mp3').play(); });
+});
 
-// بيانات المستخدم (افتراضية)
-let userData={
-    username:"TAREK",
-    password:"123456",
-    profilePic:"profile.png",
-    tbs:1000,
-    timeSpent:0 // بالدقائق
-};
+// ساعة رقمية وترحيب
+function updateClock(){
+  const now = new Date();
+  let h = now.getHours();
+  let m = now.getMinutes();
+  let s = now.getSeconds();
+  if(h<10) h='0'+h;
+  if(m<10) m='0'+m;
+  if(s<10) s='0'+s;
+  document.getElementById('clock').innerText = `${h}:${m}:${s}`;
+  
+  // رسالة ترحيب حسب الوقت
+  let msg = 'مرحبا بك في الموقع!';
+  if(h>=5 && h<12) msg='صباح الخير!';
+  else if(h>=12 && h<18) msg='مساء الخير!';
+  else msg='تصبح على خير!';
+  document.getElementById('welcome-msg').innerText = msg;
+}
+setInterval(updateClock,1000);
+updateClock();
+
+// استرجاع البيانات
+let tbs = parseInt(localStorage.getItem('tbs')) || 0;
+let timeSpent = parseInt(localStorage.getItem('timeSpent')) || 0;
+
+setInterval(()=>{
+  timeSpent++;
+  localStorage.setItem('timeSpent',timeSpent);
+  if(document.getElementById('time-spent')) document.getElementById('time-spent').innerText = `${timeSpent} دقيقة`;
+},60000);
 
 // تسجيل الدخول
-const loginBtn=document.getElementById('login-btn');
-loginBtn.addEventListener('click',()=>{
-    const u=document.getElementById('username').value;
-    const p=document.getElementById('password').value;
-    if(u===userData.username && p===userData.password){
-        document.getElementById('login-container').style.display='none';
-        document.getElementById('profile-content').style.display='block';
-        document.getElementById('profile-pic').src=userData.profilePic;
-        document.getElementById('display-username').innerText=userData.username;
-        document.getElementById('user-tbs').innerText=userData.tbs;
-        document.getElementById('user-time').innerText=userData.timeSpent+" دقائق";
-    } else alert("اسم المستخدم أو كلمة المرور غير صحيحة!");
+document.getElementById('login-btn').addEventListener('click', ()=>{
+  const username = document.getElementById('username-field').value;
+  const password = document.getElementById('password-field').value;
+  const profileImgInput = document.getElementById('profile-img-input').files[0];
+
+  if(!username || !password){alert('الرجاء إدخال البيانات كاملة'); return;}
+
+  let reader = new FileReader();
+  reader.onload = function(e){
+    if(profileImgInput) localStorage.setItem('profileImage', e.target.result);
+    saveUser(username,password);
+    showProfile();
+  };
+  if(profileImgInput) reader.readAsDataURL(profileImgInput);
+  else { saveUser(username,password); showProfile(); }
 });
+
+function saveUser(username,password){
+  localStorage.setItem('username',username);
+  localStorage.setItem('password',password);
+  localStorage.setItem('tbs',tbs);
+  localStorage.setItem('timeSpent',timeSpent);
+}
+
+// عرض البروفايل
+function showProfile(){
+  document.getElementById('login-container').style.display='none';
+  document.getElementById('profile-container').style.display='block';
+  loadUserData();
+}
+
+// استرجاع البيانات
+function loadUserData(){
+  const username = localStorage.getItem('username');
+  const profileImage = localStorage.getItem('profileImage');
+  if(profileImage) document.getElementById('profile-img').src=profileImage;
+  document.getElementById('profile-name').innerText=username;
+  document.getElementById('tbs-display').innerText=`${tbs} TBS`;
+  document.getElementById('time-spent').innerText=`${timeSpent} دقيقة`;
+}
 
 // تسجيل الخروج
-document.getElementById('logout-btn').addEventListener('click',()=>{
-    document.getElementById('profile-content').style.display='none';
-    document.getElementById('login-container').style.display='block';
+document.getElementById('logout-btn').addEventListener('click', ()=>{
+  localStorage.removeItem('password'); 
+  document.getElementById('login-container').style.display='block';
+  document.getElementById('profile-container').style.display='none';
+  document.getElementById('password-field').value='';
 });
 
-// أيقونة الإدارة
+// استرجاع اسم المستخدم عند العودة
+window.onload = function(){
+  const storedUsername = localStorage.getItem('username');
+  if(storedUsername){
+    document.getElementById('username-field').value=storedUsername;
+    document.getElementById('password-field').focus();
+  }
+}
+
+// المهام - إضافة TBS عند الانتهاء
+document.querySelectorAll('.task-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const amount = parseInt(btn.getAttribute('data-tbs'));
+    tbs += amount;
+    localStorage.setItem('tbs',tbs);
+    document.getElementById('tbs-display').innerText=`${tbs} TBS`;
+    btn.disabled=true;
+    btn.innerText = 'تم إكمال المهمة!';
+  });
+});
+
+// نافذة المدير
 document.getElementById('admin-icon').addEventListener('click',()=>{
-    document.getElementById('admin-popup').style.display='block';
+  document.getElementById('admin-popup').style.display='block';
 });
 
-// نافذة الإدارة
 document.getElementById('admin-close-btn').addEventListener('click',()=>{
-    document.getElementById('admin-popup').style.display='none';
+  document.getElementById('admin-popup').style.display='none';
 });
 
 document.getElementById('admin-login-btn').addEventListener('click',()=>{
-    const adminPass=document.getElementById('admin-password').value;
-    if(adminPass==='7243576372435763'){
-        document.getElementById('admin-info').style.display='block';
-        const ul=document.getElementById('full-user-info');
-        ul.innerHTML=`<li>اسم المستخدم: ${userData.username}</li>
-                        <li>رصيد العملة: ${userData.tbs} TBS</li>
-                        <li>الوقت داخل الموقع: ${userData.timeSpent} دقائق</li>`;
-    } else alert("كلمة المرور خاطئة!");
+  const adminPassword = document.getElementById('admin-password').value;
+  if(adminPassword==='7243576372435763'){
+    document.getElementById('admin-content').style.display='block';
+    alert('تم الدخول للصفحة الادارية');
+  } else alert('كلمة السر خاطئة!');
 });
-
-// تحديث الوقت كل دقيقة
-setInterval(()=>{
-    if(document.getElementById('profile-content').style.display==='block'){
-        userData.timeSpent+=1;
-        document.getElementById('user-time').innerText=userData.timeSpent+" دقائق";
-    }
-},60000);
