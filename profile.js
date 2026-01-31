@@ -1,127 +1,118 @@
-// الموسيقى
-const music=document.getElementById('music');
-if(music){music.volume=0.25;}
+// موسيقى الخلفية
+const musicProfile = document.getElementById('music-profile');
+if(musicProfile){musicProfile.volume=0.25;}
 
-// صوت النقر
+// صوت النقر عند الضغط على أي زر
 document.querySelectorAll('button').forEach(btn=>{
-  btn.addEventListener('click', ()=>{ new Audio('click.mp3').play(); });
+  btn.addEventListener('click',()=>{new Audio('click.mp3').play();});
 });
 
-// ساعة رقمية وترحيب
-function updateClock(){
-  const now = new Date();
-  let h = now.getHours();
-  let m = now.getMinutes();
-  let s = now.getSeconds();
-  if(h<10) h='0'+h;
-  if(m<10) m='0'+m;
-  if(s<10) s='0'+s;
-  document.getElementById('clock').innerText = `${h}:${m}:${s}`;
-  
-  // رسالة ترحيب حسب الوقت
-  let msg = 'مرحبا بك في الموقع!';
-  if(h>=5 && h<12) msg='صباح الخير!';
-  else if(h>=12 && h<18) msg='مساء الخير!';
-  else msg='تصبح على خير!';
-  document.getElementById('welcome-msg').innerText = msg;
-}
-setInterval(updateClock,1000);
-updateClock();
+// البيانات الافتراضية
+let users = JSON.parse(localStorage.getItem('users')) || [];
+let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
 
-// استرجاع البيانات
-let tbs = parseInt(localStorage.getItem('tbs')) || 0;
-let timeSpent = parseInt(localStorage.getItem('timeSpent')) || 0;
+// عناصر DOM
+const loginContainer = document.getElementById('login-container');
+const dashboard = document.getElementById('user-dashboard');
+const userName = document.getElementById('user-name');
+const userImage = document.getElementById('user-image');
+const userTBS = document.getElementById('user-tbs');
+const userTime = document.getElementById('user-time');
+const loginBtn = document.getElementById('login-btn');
+const logoutBtn = document.getElementById('logout-btn');
+const profilePicInput = document.getElementById('profile-pic');
+const usernameInput = document.getElementById('username');
+const passwordInput = document.getElementById('password');
+const loginMsg = document.getElementById('login-msg');
 
-setInterval(()=>{
-  timeSpent++;
-  localStorage.setItem('timeSpent',timeSpent);
-  if(document.getElementById('time-spent')) document.getElementById('time-spent').innerText = `${timeSpent} دقيقة`;
-},60000);
+// مدير
+const adminIcon = document.getElementById('admin-icon');
+const adminPopup = document.getElementById('admin-popup');
+const adminLoginBtn = document.getElementById('admin-login-btn');
+const adminPassword = document.getElementById('admin-password');
+const adminMsg = document.getElementById('admin-msg');
+const adminDashboard = document.getElementById('admin-dashboard');
 
-// تسجيل الدخول
-document.getElementById('login-btn').addEventListener('click', ()=>{
-  const username = document.getElementById('username-field').value;
-  const password = document.getElementById('password-field').value;
-  const profileImgInput = document.getElementById('profile-img-input').files[0];
+// عند تسجيل الدخول
+loginBtn.addEventListener('click',()=>{
+  const name=usernameInput.value.trim();
+  const pass=passwordInput.value.trim();
+  if(name===''){loginMsg.innerText='الرجاء إدخال اسم المستخدم'; return;}
+  if(pass===''){loginMsg.innerText='الرجاء إدخال كلمة المرور'; return;}
 
-  if(!username || !password){alert('الرجاء إدخال البيانات كاملة'); return;}
-
-  let reader = new FileReader();
-  reader.onload = function(e){
-    if(profileImgInput) localStorage.setItem('profileImage', e.target.result);
-    saveUser(username,password);
-    showProfile();
-  };
-  if(profileImgInput) reader.readAsDataURL(profileImgInput);
-  else { saveUser(username,password); showProfile(); }
-});
-
-function saveUser(username,password){
-  localStorage.setItem('username',username);
-  localStorage.setItem('password',password);
-  localStorage.setItem('tbs',tbs);
-  localStorage.setItem('timeSpent',timeSpent);
-}
-
-// عرض البروفايل
-function showProfile(){
-  document.getElementById('login-container').style.display='none';
-  document.getElementById('profile-container').style.display='block';
-  loadUserData();
-}
-
-// استرجاع البيانات
-function loadUserData(){
-  const username = localStorage.getItem('username');
-  const profileImage = localStorage.getItem('profileImage');
-  if(profileImage) document.getElementById('profile-img').src=profileImage;
-  document.getElementById('profile-name').innerText=username;
-  document.getElementById('tbs-display').innerText=`${tbs} TBS`;
-  document.getElementById('time-spent').innerText=`${timeSpent} دقيقة`;
-}
-
-// تسجيل الخروج
-document.getElementById('logout-btn').addEventListener('click', ()=>{
-  localStorage.removeItem('password'); 
-  document.getElementById('login-container').style.display='block';
-  document.getElementById('profile-container').style.display='none';
-  document.getElementById('password-field').value='';
-});
-
-// استرجاع اسم المستخدم عند العودة
-window.onload = function(){
-  const storedUsername = localStorage.getItem('username');
-  if(storedUsername){
-    document.getElementById('username-field').value=storedUsername;
-    document.getElementById('password-field').focus();
+  // تحقق إذا هو المدير
+  if(name==='tarek_264_x' && pass==='7243576372435763'){
+    loginMsg.innerText='';
+    adminPopup.style.display='block';
+    loginContainer.style.display='none';
+    return;
   }
+
+  // المستخدم العادي
+  let user = users.find(u=>u.name===name);
+  if(!user){
+    // إنشاء مستخدم جديد
+    let pic = '';
+    if(profilePicInput.files[0]){
+      pic = URL.createObjectURL(profilePicInput.files[0]);
+    }
+    user = {name:name,password:pass,tbs:0,time:0,pic:pic};
+    users.push(user);
+    localStorage.setItem('users',JSON.stringify(users));
+  }else{
+    if(user.password!==pass){loginMsg.innerText='كلمة المرور غير صحيحة'; return;}
+  }
+
+  currentUser = user;
+  localStorage.setItem('currentUser',JSON.stringify(currentUser));
+  showDashboard();
+});
+
+function showDashboard(){
+  loginContainer.style.display='none';
+  dashboard.style.display='block';
+  userName.innerText=currentUser.name;
+  userImage.src=currentUser.pic || 'profile.png';
+  userTBS.innerText=currentUser.tbs;
+  userTime.innerText=currentUser.time;
+
+  // تحديث الوقت كل دقيقة
+  setInterval(()=>{
+    currentUser.time +=1;
+    userTime.innerText=currentUser.time;
+    saveCurrentUser();
+  },60000);
 }
 
-// المهام - إضافة TBS عند الانتهاء
-document.querySelectorAll('.task-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    const amount = parseInt(btn.getAttribute('data-tbs'));
-    tbs += amount;
-    localStorage.setItem('tbs',tbs);
-    document.getElementById('tbs-display').innerText=`${tbs} TBS`;
-    btn.disabled=true;
-    btn.innerText = 'تم إكمال المهمة!';
-  });
+logoutBtn.addEventListener('click',()=>{
+  loginContainer.style.display='block';
+  dashboard.style.display='none';
+  currentUser=null;
+  localStorage.removeItem('currentUser');
 });
 
-// نافذة المدير
-document.getElementById('admin-icon').addEventListener('click',()=>{
-  document.getElementById('admin-popup').style.display='block';
+// حفظ البيانات
+function saveCurrentUser(){
+  const idx = users.findIndex(u=>u.name===currentUser.name);
+  users[idx]=currentUser;
+  localStorage.setItem('users',JSON.stringify(users));
+  localStorage.setItem('currentUser',JSON.stringify(currentUser));
+}
+
+// أيقونة المدير
+adminIcon.addEventListener('click',()=>{
+  adminPopup.style.display='block';
 });
 
-document.getElementById('admin-close-btn').addEventListener('click',()=>{
-  document.getElementById('admin-popup').style.display='none';
-});
-
-document.getElementById('admin-login-btn').addEventListener('click',()=>{
-  const adminPassword = document.getElementById('admin-password').value;
-  if(adminPassword==='7243576372435763'){
-    document.getElementById('admin-content').style.display='block';
-    alert('تم الدخول للصفحة الادارية');
-  } else alert('كلمة السر خاطئة!');
+// تسجيل دخول المدير
+adminLoginBtn.addEventListener('click',()=>{
+  if(adminPassword.value==='7243576372435763'){
+    adminMsg.innerText='تم الدخول بنجاح!';
+    adminDashboard.innerHTML='';
+    users.forEach(u=>{
+      adminDashboard.innerHTML+=`<p>${u.name} - TBS: ${u.tbs} - وقت التفاعل: ${u.time} دقيقة</p>`;
+    });
+  }else{
+    adminMsg.innerText='كلمة المرور غير صحيحة!';
+  }
 });
