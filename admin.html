@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>صفحة المدير - TAREK GAMER DZ</title>
+<link rel="stylesheet" href="admin.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- الخلفية -->
+<div class="admin-bg">
+  <img src="tarek.png" alt="خلفية المدير">
+</div>
+
+<!-- موسيقى الخلفية -->
+<audio autoplay loop id="admin-music">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- نافذة تسجيل الدخول للمدير -->
+<div class="admin-login-box" id="admin-login-box">
+  <h2>تسجيل دخول المدير</h2>
+  <input type="text" id="admin-username" placeholder="اسم المستخدم">
+  <input type="password" id="admin-password" placeholder="كلمة المرور">
+  <button id="admin-login-btn">دخول</button>
+</div>
+
+<!-- لوحة بيانات المستخدمين -->
+<div class="admin-panel" id="admin-panel" style="display:none;">
+  <h2>مرحبا بك أيها المدير</h2>
+  <div id="users-list"></div>
+  <button id="admin-logout-btn">تسجيل الخروج</button>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
