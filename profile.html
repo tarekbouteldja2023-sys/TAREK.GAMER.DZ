@@ -2,45 +2,66 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>صفحة البروفايل</title>
+<title>البروفايل - TAREK GAMER DZ</title>
 <link rel="stylesheet" href="profile.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-<!-- خلفية الصفحة -->
-<img src="profile.png" id="bg-img">
+<!-- الخلفية -->
+<div class="profile-bg">
+  <img src="profile.png" alt="خلفية الصفحة">
+</div>
 
 <!-- موسيقى الخلفية -->
-<audio autoplay loop id="music">
+<audio autoplay loop id="profile-music">
   <source src="Musicprofil.mp3" type="audio/mpeg">
 </audio>
 
-<!-- نافذة الترحيب -->
-<div class="welcome-bar">
-  <div class="welcome-text" id="welcome-text">
-    مرحبا بك في صفحة البروفايل
-  </div>
-</div>
-
-<!-- نموذج تسجيل الدخول -->
-<div class="login-card" id="login-card">
+<!-- نافذة تسجيل الدخول -->
+<div class="login-box" id="login-box">
   <h2>تسجيل الدخول</h2>
   <input type="text" id="username" placeholder="اسم المستخدم">
-  <input type="password" id="password" placeholder="كلمة السر">
-  <input type="file" id="profile-pic" accept="image/*">
+  <input type="password" id="password" placeholder="كلمة المرور">
+  <input type="file" id="avatar" accept="image/*">
   <button id="login-btn">دخول</button>
 </div>
 
-<!-- معلومات المستخدم بعد تسجيل الدخول -->
-<div class="user-info" id="user-info">
-  <img id="user-image" src="">
-  <h3 id="user-name"></h3>
-  <p>رصيد TBS: <span id="user-tbs">0</span></p>
-  <p>وقت التفاعل: <span id="user-time">0</span> دقيقة</p>
-  <button id="logout-btn">خروج</button>
-  <!-- أيقونة المدير -->
-  <div id="admin-icon"><i class="fa-solid fa-user-shield"></i></div>
+<!-- لوحة المستخدم -->
+<div class="user-panel" id="user-panel" style="display:none;">
+  <div class="user-header">
+    <img src="" id="user-avatar" alt="صورة المستخدم">
+    <h2 id="user-name"></h2>
+  </div>
+  <div class="user-info">
+    <p>كلمة المرور: <span id="user-pass">******</span></p>
+    <p>رصيد TBS: <span id="user-tbs">0</span></p>
+    <p>وقت التفاعل: <span id="user-time">0 دقيقة</span></p>
+  </div>
+  <div class="user-actions">
+    <input type="text" id="send-to" placeholder="أرسل TBS إلى">
+    <input type="number" id="send-amount" placeholder="المبلغ">
+    <button id="send-btn">إرسال العملة</button>
+    <button id="logout-btn">تسجيل الخروج</button>
+  </div>
+</div>
+
+<!-- أيقونة مدير -->
+<div class="admin-icon" id="admin-icon">
+  <i class="fa-solid fa-user-shield"></i>
+</div>
+
+<!-- نافذة مدير منبثقة -->
+<div class="admin-popup" id="admin-popup">
+  <h2>دخول المدير</h2>
+  <input type="text" id="admin-user" placeholder="اسم المستخدم">
+  <input type="password" id="admin-pass" placeholder="كلمة المرور">
+  <button id="admin-login-btn">دخول</button>
+  <button id="admin-close-btn">إغلاق</button>
+  <div id="admin-info" style="display:none;">
+    <h3>بيانات المستخدمين</h3>
+    <div id="users-list"></div>
+  </div>
 </div>
 
 <script src="profile.js"></script>
