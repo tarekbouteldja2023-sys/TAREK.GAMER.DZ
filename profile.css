@@ -1,42 +1,9 @@
-body {
-  margin:0;padding:0;font-family:'Cairo',sans-serif;color:white;overflow:hidden;
-}
-#bg-img {
-  position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1;filter:brightness(0.6);
-}
-audio {display:none;}
-
-/* الترحيب */
-.welcome-bar {
-  position:fixed;top:0;width:100%;background:rgba(0,0,0,0.7);padding:10px 0;text-align:center;z-index:100;
-}
-.welcome-text {font-size:20px;font-weight:bold;text-shadow:0 0 8px #0ff;}
-
-/* نموذج تسجيل الدخول */
-.login-card {
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  background:rgba(0,0,0,0.8);padding:30px;border-radius:15px;text-align:center;box-shadow:0 0 20px #0ff;
-}
-.login-card input {
-  display:block;width:80%;margin:10px auto;padding:10px;border-radius:10px;border:none;
-}
-.login-card button {
-  padding:10px 20px;margin-top:10px;border:none;border-radius:10px;background:#0ff;color:black;font-weight:bold;cursor:pointer;
-  box-shadow:0 0 10px #0ff;
-}
-.login-card button:hover {transform:scale(1.05);box-shadow:0 0 20px #0ff;}
-
-/* معلومات المستخدم */
-.user-info {
-  display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  background:rgba(0,0,0,0.8);padding:30px;border-radius:15px;text-align:center;box-shadow:0 0 25px #0ff;
-}
-.user-info img {width:100px;height:100px;border-radius:50%;border:2px solid #0ff;margin-bottom:10px;}
-.user-info h3 {margin:5px 0;font-size:24px;text-shadow:0 0 8px #0ff;}
-.user-info p {margin:5px 0;font-size:18px;}
-.user-info button {margin-top:15px;padding:10px 20px;border-radius:10px;border:none;background:#0ff;color:black;font-weight:bold;cursor:pointer;box-shadow:0 0 10px #0ff;}
-.user-info button:hover {transform:scale(1.05);box-shadow:0 0 20px #0ff;}
-
-/* أيقونة المدير */
-#admin-icon {position:absolute;bottom:20px;right:20px;font-size:28px;color:#ff0;cursor:pointer;}
-#admin-icon:hover {color:#ffd700;transform:scale(1.2);}
+body, html { margin:0; padding:0; font-family: 'Arial', sans-serif; }
+.profile-bg img { position: fixed; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+.login-box, .user-panel, .admin-popup { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.8); color: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 0 20px #000; }
+.login-box input, .user-actions input { display:block; width: 100%; margin: 10px 0; padding:10px; border-radius:5px; border:none; }
+button { padding:10px 15px; margin-top:10px; border:none; border-radius:5px; cursor:pointer; background: gold; color:#000; font-weight:bold; }
+.user-header img { width:100px; height:100px; border-radius:50%; border:3px solid gold; margin-bottom:10px; }
+.user-actions { margin-top:20px; }
+.admin-icon { position: fixed; bottom:20px; right:20px; font-size: 30px; color: gold; cursor: pointer; }
+.admin-popup { display:none; width: 400px; max-height: 500px; overflow-y:auto; }
